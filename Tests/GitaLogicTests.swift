@@ -90,6 +90,70 @@ struct GitaLogicTests {
         let highE = autoTuner.ingest(PitchReading(frequency: 329.63, clarity: 0.95), targets: Instrument.guitar.openStrings, at: 2)
         precondition(highE.stringIndex == 5, "The guitar high E should not be confused with its low E")
         precondition(autoTuner.ingest(nil, targets: Instrument.guitar.openStrings, at: 2.2).stringIndex == nil, "Silence clears the live string indication")
+
+        var highGAuto = UkuleleAutoTuner()
+        let firstHigh = pluck(&highGAuto, hz: 392, gEvidence: .high, at: 1)
+        precondition(firstHigh.confirmedTuning == nil && firstHigh.completed.isEmpty, "One pluck must not choose a layout or physical string")
+        let lockedHigh = pluck(&highGAuto, hz: 261.63, at: 2)
+        precondition(lockedHigh.confirmedTuning == .highG && lockedHigh.completed == [0, 1], "Distinct G4 and C4 plucks should identify and check high-G")
+        _ = pluck(&highGAuto, hz: 329.63, at: 3)
+        let finishedHigh = pluck(&highGAuto, hz: 440, at: 4)
+        precondition(finishedHigh.completed == [0, 1, 2, 3], "Each high-G string should be checked without taps")
+
+        var lowGAuto = UkuleleAutoTuner()
+        _ = pluck(&lowGAuto, hz: 440, at: 1)
+        let lockedLow = pluck(&lowGAuto, hz: 196, gEvidence: .low, at: 2)
+        precondition(lockedLow.confirmedTuning == .lowG && lockedLow.completed == [0, 3], "A4 and G3 should identify low-G regardless of order")
+        _ = pluck(&lowGAuto, hz: 261.63, at: 3)
+        let finishedLow = pluck(&lowGAuto, hz: 329.63, at: 4)
+        precondition(finishedLow.completed == [0, 1, 2, 3], "All low-G strings should complete")
+
+        var baritoneAuto = UkuleleAutoTuner()
+        _ = pluck(&baritoneAuto, hz: 246.94, at: 1)
+        let lockedBaritone = pluck(&baritoneAuto, hz: 146.83, at: 2)
+        precondition(lockedBaritone.confirmedTuning == .baritone && lockedBaritone.completed == [0, 2], "B3 and D3 should identify baritone")
+        _ = pluck(&baritoneAuto, hz: 196, gEvidence: .low, at: 3)
+        let finishedBaritone = pluck(&baritoneAuto, hz: 329.63, at: 4)
+        precondition(finishedBaritone.completed == [0, 1, 2, 3], "All baritone strings should complete")
+
+        var sharedNotes = UkuleleAutoTuner()
+        _ = pluck(&sharedNotes, hz: 329.63, at: 1)
+        let sharedG = pluck(&sharedNotes, hz: 196, gEvidence: .low, at: 2)
+        precondition(sharedG.confirmedTuning == nil && sharedG.completed.isEmpty && sharedG.needsTopStringPrompt, "E4 and G3 cannot establish a physical layout")
+        var repeatedNote = UkuleleAutoTuner()
+        _ = pluck(&repeatedNote, hz: 440, at: 1)
+        let repeatedResult = pluck(&repeatedNote, hz: 440, at: 2)
+        precondition(repeatedResult.confirmedTuning == nil, "Repeated A4 must count as one distinct target")
+        var ambiguousG = UkuleleAutoTuner()
+        let unresolved = pluck(&ambiguousG, hz: 392, gEvidence: .uncertain, at: 1)
+        precondition(unresolved.completed.isEmpty && unresolved.confirmedTuning == nil && unresolved.needsTopStringPrompt, "Harmonic-conflicted G must not create a check")
+        var harmonicG = UkuleleAutoTuner()
+        _ = pluck(&harmonicG, hz: 392, gEvidence: .low, at: 1)
+        let harmonicLocked = pluck(&harmonicG, hz: 440, at: 2)
+        precondition(harmonicLocked.confirmedTuning == .lowG && harmonicLocked.completed == [0, 3], "A G4 harmonic identified as low G must map to G3")
+
+        var noisy = UkuleleAutoTuner()
+        let noisyReading = noisy.ingest(PitchReading(frequency: 440, clarity: 0.2), gEvidence: nil, at: 0)
+        precondition(noisyReading.completed.isEmpty && noisyReading.confirmedTuning == nil, "Weak audio must not count")
+        let chordReading = PitchDetector.estimate(cChord, sampleRate: sampleRate)
+        let chordInput: PitchReading? = (chordReading?.clarity ?? 0) < 0.84 ? nil : chordReading
+        precondition(noisy.ingest(chordInput, gEvidence: nil, at: 0.2).completed.isEmpty, "A strum must not check an individual string")
+        precondition(noisy.ingest(PitchReading(frequency: 600, clarity: 0.95), gEvidence: nil, at: 0.4).completed.isEmpty, "Distant notes must not check a string")
+
+        var closeOnly = UkuleleAutoTuner(confirmedTuning: .highG)
+        let fifteenCentsSharp = 440 * pow(2, 15.0 / 1_200)
+        let closeResult = pluck(&closeOnly, hz: fifteenCentsSharp, at: 1)
+        precondition(closeResult.completed.isEmpty && closeResult.cents != nil && closeResult.cents! > 10, "Close guidance must not be a green check")
+
+        var dropout = UkuleleAutoTuner(confirmedTuning: .highG)
+        _ = dropout.ingest(PitchReading(frequency: 440, clarity: 0.95), gEvidence: nil, at: 10)
+        _ = dropout.ingest(PitchReading(frequency: 440, clarity: 0.95), gEvidence: nil, at: 10.18)
+        _ = dropout.ingest(nil, gEvidence: nil, at: 10.30)
+        _ = dropout.ingest(PitchReading(frequency: 440, clarity: 0.95), gEvidence: nil, at: 10.40)
+        _ = dropout.ingest(PitchReading(frequency: 440, clarity: 0.95), gEvidence: nil, at: 10.58)
+        let afterDropout = dropout.ingest(PitchReading(frequency: 440, clarity: 0.95), gEvidence: nil, at: 10.75)
+        precondition(afterDropout.completed.contains(3), "A brief missing frame should not erase valid tuning time")
+
         var lessonJudge = LessonJudge()
         precondition(!lessonJudge.matches(a4, sampleRate: sampleRate, target: Instrument.guitar.lesson[0]), "A4 is not the guitar high E")
         lessonJudge.reset()
@@ -123,5 +187,14 @@ struct GitaLogicTests {
             let phase = 2 * Double.pi * Double(index) / sampleRate
             return Float((lowAmplitude * sin(base * phase) + highAmplitude * sin(2 * base * phase)) / (lowAmplitude + highAmplitude))
         }
+    }
+
+    private static func pluck(_ tuner: inout UkuleleAutoTuner, hz: Double, gEvidence: GOctaveEvidence? = nil, at start: Double) -> UkuleleTunerFeedback {
+        var result = tuner.ingest(nil, gEvidence: nil, at: start - 0.05)
+        for offset in [0.0, 0.18, 0.36, 0.54] {
+            result = tuner.ingest(PitchReading(frequency: hz, clarity: 0.95), gEvidence: gEvidence, at: start + offset)
+        }
+        _ = tuner.ingest(nil, gEvidence: nil, at: start + 0.59)
+        return result
     }
 }
