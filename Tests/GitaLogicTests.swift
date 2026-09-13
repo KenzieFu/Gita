@@ -19,6 +19,9 @@ struct GitaLogicTests {
         precondition(SetupProgress(instrument: .ukulele, tutorialComplete: false).destination == .tuning)
         precondition(SetupProgress(instrument: .ukulele, tutorialComplete: true).destination == .ready)
         let sampleRate = 44_100.0
+        precondition(PitchDetector.gOctaveEvidence(tone(392, count: 8_192, sampleRate: sampleRate), sampleRate: sampleRate, estimatedFrequency: 392) == .high, "Pure high G must not be classified as low G")
+        precondition(PitchDetector.gOctaveEvidence(harmonicTone(196, lowAmplitude: 0.35, highAmplitude: 1, count: 8_192, sampleRate: sampleRate), sampleRate: sampleRate, estimatedFrequency: 392) == .low, "Low G with a loud octave harmonic must retain its fundamental")
+        precondition(PitchDetector.gOctaveEvidence(harmonicTone(196, lowAmplitude: 0.15, highAmplitude: 1, count: 8_192, sampleRate: sampleRate), sampleRate: sampleRate, estimatedFrequency: 392) == .uncertain, "Weak fundamental must remain ambiguous")
         let a4 = tone(440, count: 8_192, sampleRate: sampleRate)
         let estimate = PitchDetector.estimate(a4, sampleRate: sampleRate)
         precondition(estimate != nil && abs(estimate!.frequency - 440) < 3, "A4 estimate must be close to 440 Hz")
@@ -112,6 +115,13 @@ struct GitaLogicTests {
             Float(frequencies.reduce(0) { sum, frequency in
                 sum + sin(2 * Double.pi * frequency * Double(index) / sampleRate)
             } / Double(frequencies.count))
+        }
+    }
+
+    private static func harmonicTone(_ base: Double, lowAmplitude: Double, highAmplitude: Double, count: Int, sampleRate: Double) -> [Float] {
+        (0..<count).map { index in
+            let phase = 2 * Double.pi * Double(index) / sampleRate
+            return Float((lowAmplitude * sin(base * phase) + highAmplitude * sin(2 * base * phase)) / (lowAmplitude + highAmplitude))
         }
     }
 }

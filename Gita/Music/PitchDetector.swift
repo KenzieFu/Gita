@@ -5,9 +5,53 @@ struct PitchReading {
     let clarity: Double
 }
 
+enum GOctaveEvidence: Equatable {
+    case low
+    case high
+    case uncertain
+}
+
 enum PitchDetector {
     static func cents(_ frequency: Double, target: Double) -> Double {
         1_200 * log2(frequency / target)
+    }
+
+    static func gOctaveEvidence(_ samples: [Float], sampleRate: Double, estimatedFrequency: Double) -> GOctaveEvidence {
+        guard samples.count >= 2_048, sampleRate > 0, estimatedFrequency.isFinite, estimatedFrequency > 0,
+              [196.0, 392.0].contains(where: { abs(cents(estimatedFrequency, target: $0)) <= 80 }) else {
+            return .uncertain
+        }
+        let lowFrequency = estimatedFrequency > 280 ? estimatedFrequency / 2 : estimatedFrequency
+        let lowAmplitude = spectralAmplitude(samples, sampleRate: sampleRate, frequency: lowFrequency)
+        let highAmplitude = spectralAmplitude(samples, sampleRate: sampleRate, frequency: lowFrequency * 2)
+        guard max(lowAmplitude, highAmplitude) > 0.012 else { return .uncertain }
+        let ratio = lowAmplitude / max(highAmplitude, 0.0001)
+        if ratio >= 0.25 { return .low }
+        if ratio <= 0.08 { return .high }
+        return .uncertain
+    }
+
+    private static func spectralAmplitude(_ samples: [Float], sampleRate: Double, frequency: Double) -> Double {
+        let count = samples.count
+        let angle = 2 * Double.pi * frequency / sampleRate
+        let cosStep = cos(angle)
+        let sinStep = sin(angle)
+        var oscillatorReal = 1.0
+        var oscillatorImaginary = 0.0
+        var real = 0.0
+        var imaginary = 0.0
+        var windowSum = 0.0
+        for (index, sample) in samples.enumerated() {
+            let window = 0.5 - 0.5 * cos(2 * Double.pi * Double(index) / Double(count - 1))
+            let weighted = Double(sample) * window
+            real += weighted * oscillatorReal
+            imaginary += weighted * oscillatorImaginary
+            windowSum += window
+            let nextReal = oscillatorReal * cosStep - oscillatorImaginary * sinStep
+            oscillatorImaginary = oscillatorImaginary * cosStep + oscillatorReal * sinStep
+            oscillatorReal = nextReal
+        }
+        return 2 * hypot(real, imaginary) / max(windowSum, 1)
     }
 
     static func estimate(_ samples: [Float], sampleRate: Double) -> PitchReading? {
