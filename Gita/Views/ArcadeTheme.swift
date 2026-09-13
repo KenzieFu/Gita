@@ -4,6 +4,7 @@ enum ArcadeTheme {
     static let background = Color(red: 0.035, green: 0.045, blue: 0.12)
     static let panel = Color(red: 0.08, green: 0.10, blue: 0.20)
     static let cyan = Color(red: 0.34, green: 0.94, blue: 0.98)
+    static let green = Color(red: 0.34, green: 0.92, blue: 0.58)
     static let pink = Color(red: 1.00, green: 0.36, blue: 0.70)
     static let yellow = Color(red: 1.00, green: 0.83, blue: 0.37)
     static let muted = Color(red: 0.68, green: 0.74, blue: 0.84)

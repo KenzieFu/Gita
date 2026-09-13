@@ -4,26 +4,41 @@ import UIKit
 struct TunerView: View {
     let instrument: Instrument
     @ObservedObject var microphone: Microphone
-    let onProgress: (Set<Int>) -> Void
+    let onProgress: (Set<Int>, UkuleleTuning?) -> Void
     let onComplete: () -> Void
     let onBack: () -> Void
 
     @State private var completed: Set<Int>
     @State private var feedback: AutoTuningFeedback?
     @State private var autoTuner = AutoTuner()
+    @State private var ukuleleFeedback: UkuleleTunerFeedback?
+    @State private var ukuleleAutoTuner: UkuleleAutoTuner
+    @State private var currentTuning: UkuleleTuning?
+    @State private var successMessage: String?
+    @State private var successTask: Task<Void, Never>?
+    @State private var completionTask: Task<Void, Never>?
 
-    init(instrument: Instrument, microphone: Microphone, completed: Set<Int>, onProgress: @escaping (Set<Int>) -> Void, onComplete: @escaping () -> Void, onBack: @escaping () -> Void) {
+    init(instrument: Instrument, initialTuning: UkuleleTuning?, microphone: Microphone, completed: Set<Int>, onProgress: @escaping (Set<Int>, UkuleleTuning?) -> Void, onComplete: @escaping () -> Void, onBack: @escaping () -> Void) {
         self.instrument = instrument
         self.microphone = microphone
         self.onProgress = onProgress
         self.onComplete = onComplete
         self.onBack = onBack
         _completed = State(initialValue: completed)
+        _currentTuning = State(initialValue: initialTuning)
+        _ukuleleAutoTuner = State(initialValue: UkuleleAutoTuner(confirmedTuning: initialTuning, completed: completed))
     }
 
-    private var activeIndex: Int? { feedback?.stringIndex }
-    private var cents: Double? { feedback?.cents }
+    private var activeIndex: Int? { instrument == .ukulele ? ukuleleFeedback?.stringIndex : feedback?.stringIndex }
+    private var cents: Double? { instrument == .ukulele ? ukuleleFeedback?.cents : feedback?.cents }
     private var zone: TuningZone { TuningZone.classify(cents) }
+    private var targets: [StringTarget] { instrument.tuningTargets(currentTuning) }
+    private var headstockLabels: [String] { instrument == .ukulele && currentTuning == nil ? Array(repeating: "?", count: 4) : targets.map(\.label) }
+    private var displayNote: String {
+        if instrument == .ukulele { return ukuleleFeedback?.detectedNote ?? "—" }
+        return activeIndex.map { targets[$0].label } ?? "—"
+    }
+    private var isAllTuned: Bool { completed.count == instrument.stringCount }
 
     var body: some View {
         GeometryReader { geometry in
@@ -35,7 +50,7 @@ struct TunerView: View {
                             .tracking(3)
                             .foregroundStyle(.white)
                         Spacer()
-                        Text("TUNE · \(completed.count)/\(instrument.openStrings.count)")
+                        Text("TUNE · \(completed.count)/\(instrument.stringCount)")
                             .font(.caption.monospaced().weight(.bold))
                             .foregroundStyle(ArcadeTheme.yellow)
                     }
@@ -44,16 +59,25 @@ struct TunerView: View {
                             Text("Tune up.")
                                 .font(.system(size: 34, weight: .black, design: .rounded))
                                 .foregroundStyle(.white)
-                            Text("Pluck one string with no frets pressed. Gita finds the note.")
+                            Text(instrument == .ukulele ? "Pluck each open string one at a time. Gita finds all four." : "Pluck one string with no frets pressed. Gita finds the note.")
                                 .font(.subheadline)
                                 .foregroundStyle(ArcadeTheme.muted)
-                            TuningHeadstock(instrument: instrument, highlighted: activeIndex, completed: completed)
+                            if instrument == .ukulele {
+                                Text(currentTuning?.displayName ?? "Finding your ukulele tuning…")
+                                    .font(.caption.weight(.bold))
+                                    .foregroundStyle(currentTuning == nil ? ArcadeTheme.yellow : ArcadeTheme.cyan)
+                            }
+                            TuningHeadstock(instrument: instrument, labels: headstockLabels, highlighted: activeIndex, completed: completed)
                             HStack {
                                 Text("No buttons — just play")
                                     .font(.caption)
                                     .foregroundStyle(ArcadeTheme.muted)
                                 Spacer()
-                                Button("Change instrument", action: onBack)
+                                Button("Change instrument") {
+                                    completionTask?.cancel()
+                                    successTask?.cancel()
+                                    onBack()
+                                }
                                     .font(.caption.weight(.bold))
                                     .foregroundStyle(ArcadeTheme.cyan)
                             }
@@ -61,16 +85,16 @@ struct TunerView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         StagePanel {
                             VStack(alignment: .leading, spacing: 10) {
-                                Text(activeIndex.map { "LIKELY OPEN STRING \($0 + 1)" } ?? "LISTENING FOR A STRING")
+                                Text(isAllTuned && instrument == .ukulele ? "TUNING COMPLETE" : (instrument == .ukulele && currentTuning == nil ? "CHECKING WHICH STRING" : (activeIndex.map { "LIKELY OPEN STRING \($0 + 1)" } ?? "LISTENING FOR A STRING")))
                                     .font(.caption.monospaced().weight(.bold))
                                     .foregroundStyle(ArcadeTheme.yellow)
-                                Text(activeIndex.map { instrument.openStrings[$0].label } ?? "—")
+                                Text(displayNote)
                                     .font(.system(size: 52, weight: .black, design: .rounded))
                                     .foregroundStyle(.white)
                                 tuningMeter
                                 Text(direction)
                                     .font(.headline.weight(.bold))
-                                    .foregroundStyle(zone == .inTune ? ArcadeTheme.cyan : (zone == .flat || zone == .sharp ? ArcadeTheme.pink : ArcadeTheme.yellow))
+                                    .foregroundStyle(successMessage != nil || (isAllTuned && instrument == .ukulele) ? ArcadeTheme.green : (zone == .inTune ? ArcadeTheme.cyan : (zone == .flat || zone == .sharp ? ArcadeTheme.pink : ArcadeTheme.yellow)))
                                 microphoneStatus
                             }
                         }
@@ -86,27 +110,83 @@ struct TunerView: View {
         }
         .onReceive(microphone.$latestSamples) { samples in
             guard !samples.isEmpty, microphone.state == .listening else { return }
-            let newReading = PitchDetector.estimate(samples, sampleRate: microphone.sampleRate)
-            let result = autoTuner.ingest(newReading, targets: instrument.openStrings, at: ProcessInfo.processInfo.systemUptime)
-            withAnimation(.easeOut(duration: 0.16)) { feedback = result }
-            if let tunedIndex = result.newlyTunedIndex, !completed.contains(tunedIndex) {
-                completed.insert(tunedIndex)
-                onProgress(completed)
-                if completed.count == instrument.openStrings.count {
-                    onComplete()
-                }
+            let reading = PitchDetector.estimate(samples, sampleRate: microphone.sampleRate)
+            if instrument == .ukulele {
+                ingestUkulele(reading, samples: samples)
+            } else {
+                ingestGuitar(reading)
+            }
+        }
+        .onDisappear {
+            completionTask?.cancel()
+            successTask?.cancel()
+        }
+    }
+
+    private func ingestUkulele(_ reading: PitchReading?, samples: [Float]) {
+        let evidence = reading.map {
+            PitchDetector.gOctaveEvidence(samples, sampleRate: microphone.sampleRate, estimatedFrequency: $0.frequency)
+        }
+        let result = ukuleleAutoTuner.ingest(reading, gEvidence: evidence, at: ProcessInfo.processInfo.systemUptime)
+        withAnimation(.easeOut(duration: 0.16)) { ukuleleFeedback = result }
+        if completed != result.completed || currentTuning != result.confirmedTuning {
+            completed = result.completed
+            currentTuning = result.confirmedTuning
+            onProgress(completed, currentTuning)
+        }
+        if let lastTuned = result.newlyTuned.sorted().last, let currentTuning {
+            announce("\(currentTuning.openStrings[lastTuned].label) tuned!")
+        }
+        if result.finishedNow, currentTuning != nil, completionTask == nil {
+            announce("All four strings tuned!")
+            completionTask = Task { @MainActor in
+                try? await Task.sleep(for: .milliseconds(1_500))
+                guard !Task.isCancelled else { return }
+                onComplete()
             }
         }
     }
 
+    private func ingestGuitar(_ reading: PitchReading?) {
+        let result = autoTuner.ingest(reading, targets: targets, at: ProcessInfo.processInfo.systemUptime)
+        withAnimation(.easeOut(duration: 0.16)) { feedback = result }
+        if let tunedIndex = result.newlyTunedIndex, !completed.contains(tunedIndex) {
+            completed.insert(tunedIndex)
+            onProgress(completed, nil)
+            if isAllTuned { onComplete() }
+        }
+    }
+
+    private func announce(_ message: String) {
+        successTask?.cancel()
+        successMessage = message
+        successTask = Task { @MainActor in
+            try? await Task.sleep(for: .milliseconds(1_200))
+            guard !Task.isCancelled else { return }
+            successMessage = nil
+        }
+    }
+
     private var direction: String {
+        if isAllTuned && instrument == .ukulele { return "All four strings tuned!" }
+        if let successMessage { return successMessage }
+        if instrument == .ukulele {
+            if ukuleleFeedback?.needsTopStringPrompt == true { return "Pluck the top open string" }
+            switch ukuleleFeedback?.status {
+            case .ambiguous: return "Checking which string — pluck again"
+            case .tryAgain: return "Try one open string again"
+            case .listening, nil: return "Pluck an open string"
+            case .tracking: break
+            }
+            if currentTuning == nil && zone == .inTune { return "Note heard — checking its string" }
+        }
         switch zone {
-        case .waiting: "Pluck an open string"
-        case .flat: "Too low — tighten a little"
-        case .closeFlat: "Close — tighten a little"
-        case .inTune: "In tune — hold it steady"
-        case .closeSharp: "Close — loosen a little"
-        case .sharp: "Too high — loosen a little"
+        case .waiting: return "Pluck an open string"
+        case .flat: return "Too low — tighten a little"
+        case .closeFlat: return "Close — tighten a little"
+        case .inTune: return "In tune — hold it steady"
+        case .closeSharp: return "Close — loosen a little"
+        case .sharp: return "Too high — loosen a little"
         }
     }
 
@@ -175,6 +255,7 @@ struct TunerView: View {
 
 private struct TuningHeadstock: View {
     let instrument: Instrument
+    let labels: [String]
     let highlighted: Int?
     let completed: Set<Int>
 
@@ -197,17 +278,18 @@ private struct TuningHeadstock: View {
     private func badge(for index: Int) -> some View {
         let isActive = highlighted == index
         let isComplete = completed.contains(index)
+        let accent = isComplete ? ArcadeTheme.green : ArcadeTheme.cyan
         return VStack(spacing: 2) {
-            Text(instrument.openStrings[index].label)
+            Text(labels[index])
                 .font(.title2.weight(.black))
             Text(isComplete ? "✓" : "\(index + 1)")
                 .font(.caption.monospaced().weight(.bold))
         }
         .frame(width: 58, height: 50)
-        .foregroundStyle(isActive ? ArcadeTheme.background : (isComplete ? ArcadeTheme.cyan : .white))
-        .background(isActive ? ArcadeTheme.cyan : ArcadeTheme.panel, in: RoundedRectangle(cornerRadius: 16))
-        .overlay(RoundedRectangle(cornerRadius: 16).stroke(ArcadeTheme.cyan.opacity(isActive || isComplete ? 1 : 0.35), lineWidth: 2))
-        .accessibilityLabel("String \(index + 1), \(instrument.openStrings[index].label), \(isActive ? "detected" : isComplete ? "tuned" : "not tuned")")
+        .foregroundStyle(isActive || isComplete ? ArcadeTheme.background : .white)
+        .background(isActive || isComplete ? accent : ArcadeTheme.panel, in: RoundedRectangle(cornerRadius: 16))
+        .overlay(RoundedRectangle(cornerRadius: 16).stroke(accent.opacity(isActive || isComplete ? 1 : 0.35), lineWidth: 2))
+        .accessibilityLabel("String \(index + 1), \(labels[index] == "?" ? "note unknown" : labels[index]), \(isComplete ? "tuned" : isActive ? "detected" : "not tuned")")
     }
 
     private var headstock: some View {
@@ -216,7 +298,7 @@ private struct TuningHeadstock: View {
                 .fill(LinearGradient(colors: [Color(red: 0.54, green: 0.27, blue: 0.23), Color(red: 0.27, green: 0.14, blue: 0.20)], startPoint: .topLeading, endPoint: .bottomTrailing))
                 .overlay(RoundedRectangle(cornerRadius: 28).stroke(ArcadeTheme.yellow.opacity(0.6), lineWidth: 2))
             HStack(spacing: 16) {
-                ForEach(0..<instrument.openStrings.count, id: \.self) { _ in
+                ForEach(0..<instrument.stringCount, id: \.self) { _ in
                     Rectangle().fill(.white.opacity(0.6)).frame(width: 1)
                 }
             }

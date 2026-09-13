@@ -16,6 +16,8 @@ struct UkuleleTunerFeedback {
     let completed: Set<Int>
     let newlyTuned: Set<Int>
     let needsTopStringPrompt: Bool
+
+    var finishedNow: Bool { completed.count == 4 && !newlyTuned.isEmpty }
 }
 
 struct UkuleleAutoTuner {
@@ -52,6 +54,10 @@ struct UkuleleAutoTuner {
         }
 
         guard let frequency = resolvedFrequency(reading.frequency, gEvidence: gEvidence) else {
+            pause(at: time)
+            if let lastDisplayAt, time - lastDisplayAt <= 0.25, let lastDisplay {
+                return feedback(status: lastDisplay.status, note: lastDisplay.detectedNote, target: activeTarget, cents: lastDisplay.cents, newlyTuned: [])
+            }
             clearActiveTarget()
             return feedback(status: .ambiguous, note: noteName(reading.frequency), target: nil, cents: nil, newlyTuned: [], promptTopString: true)
         }

@@ -3,6 +3,7 @@ import UIKit
 
 struct TutorialView: View {
     let instrument: Instrument
+    let tuning: UkuleleTuning?
     @ObservedObject var microphone: Microphone
     let onStepComplete: (Int) -> Void
     let onComplete: () -> Void
@@ -14,8 +15,9 @@ struct TutorialView: View {
     @State private var feedback = "Tap Play along, then follow the cue."
     @State private var judge = LessonJudge()
 
-    init(instrument: Instrument, microphone: Microphone, initialStep: Int, onStepComplete: @escaping (Int) -> Void, onComplete: @escaping () -> Void, onBack: @escaping () -> Void) {
+    init(instrument: Instrument, tuning: UkuleleTuning?, microphone: Microphone, initialStep: Int, onStepComplete: @escaping (Int) -> Void, onComplete: @escaping () -> Void, onBack: @escaping () -> Void) {
         self.instrument = instrument
+        self.tuning = tuning
         self.microphone = microphone
         self.onStepComplete = onStepComplete
         self.onComplete = onComplete
@@ -23,7 +25,7 @@ struct TutorialView: View {
         _stepIndex = State(initialValue: min(max(initialStep, 0), 2))
     }
 
-    private var target: LessonTarget { instrument.lesson[stepIndex] }
+    private var target: LessonTarget { instrument.lessonTargets(tuning)[stepIndex] }
 
     var body: some View {
         StageShell(step: "05 / Tutorial · \(stepIndex + 1)/3", title: target.title, subtitle: target.instruction) {

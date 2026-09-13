@@ -5,7 +5,7 @@ struct InstrumentChoiceView: View {
 
     var body: some View {
         StageShell(step: "03 / Instrument", title: "Pick your sound.", subtitle: "Start with the instrument in your hands. You can switch later.") {
-            Text("The tuner and exercises will use your choice's standard string layout.")
+            Text("The tuner listens to your open strings, then matches the exercises to your instrument.")
                 .font(.subheadline)
                 .foregroundStyle(ArcadeTheme.muted)
         } trailing: {

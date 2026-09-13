@@ -78,8 +78,9 @@ struct ContentView: View {
             }
         case .tuning:
             if let instrument = progress.instrument {
-                TunerView(instrument: instrument, microphone: microphone, completed: progress.completedTuning) { tuned in
+                TunerView(instrument: instrument, initialTuning: progress.ukuleleTuning, microphone: microphone, completed: progress.completedTuning) { tuned, tuning in
                     progress.completedTuning = tuned
+                    progress.ukuleleTuning = tuning
                     saveProgress()
                 } onComplete: {
                     route = returningFromReadyRetune ? .ready : .tutorial
@@ -90,7 +91,7 @@ struct ContentView: View {
             }
         case .tutorial:
             if let instrument = progress.instrument {
-                TutorialView(instrument: instrument, microphone: microphone, initialStep: progress.lessonStep) { nextStep in
+                TutorialView(instrument: instrument, tuning: progress.ukuleleTuning, microphone: microphone, initialStep: progress.lessonStep) { nextStep in
                     progress.lessonStep = nextStep
                     saveProgress()
                 } onComplete: {
@@ -105,7 +106,7 @@ struct ContentView: View {
         case .ready:
             if let instrument = progress.instrument {
                 ReadyView(instrument: instrument, isGuest: guestMode) {
-                    progress.completedTuning = []
+                    progress.resetTuning()
                     saveProgress()
                     returningFromReadyRetune = true
                     route = .tuning
