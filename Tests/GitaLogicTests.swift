@@ -10,6 +10,31 @@ struct GitaLogicTests {
         precondition(SetupProgress(instrument: nil, tutorialComplete: false).destination == .instrumentChoice)
         precondition(SetupProgress(instrument: .ukulele, tutorialComplete: false).destination == .tuning)
         precondition(SetupProgress(instrument: .ukulele, tutorialComplete: true).destination == .ready)
+        let sampleRate = 44_100.0
+        let a4 = tone(440, count: 8_192, sampleRate: sampleRate)
+        let estimate = PitchDetector.estimate(a4, sampleRate: sampleRate)
+        precondition(estimate != nil && abs(estimate!.frequency - 440) < 3, "A4 estimate must be close to 440 Hz")
+        precondition(PitchDetector.estimate(Array(repeating: 0, count: 8_192), sampleRate: sampleRate) == nil, "Silence must not be a note")
+        precondition(abs(PitchDetector.cents(440, target: 440)) < 0.1)
+        precondition(abs(PitchDetector.cents(466.16, target: 440) - 100) < 0.5)
+        let lowE = tone(82.4069, count: 8_192, sampleRate: sampleRate)
+        precondition(abs((PitchDetector.estimate(lowE, sampleRate: sampleRate)?.frequency ?? 0) - 82.4069) < 2, "Low guitar E2 must be detected")
+        let cChord = mixture([261.63, 329.63, 392, 523.25], count: 8_192, sampleRate: sampleRate)
+        precondition(ChordMatcher.matches(cChord, sampleRate: sampleRate, targets: [261.63, 329.63, 392, 523.25]), "C chord pitch content should match")
+        precondition(!ChordMatcher.matches(a4, sampleRate: sampleRate, targets: [261.63, 329.63, 392, 523.25]), "A single pitch is not a C chord")
+        precondition(!ChordMatcher.matches(Array(repeating: 0, count: 8_192), sampleRate: sampleRate, targets: [261.63, 329.63, 392, 523.25]), "Silence is not a chord")
         print("Gita logic tests passed")
+    }
+
+    private static func tone(_ frequency: Double, count: Int, sampleRate: Double) -> [Float] {
+        (0..<count).map { Float(sin(2 * Double.pi * frequency * Double($0) / sampleRate)) }
+    }
+
+    private static func mixture(_ frequencies: [Double], count: Int, sampleRate: Double) -> [Float] {
+        (0..<count).map { index in
+            Float(frequencies.reduce(0) { sum, frequency in
+                sum + sin(2 * Double.pi * frequency * Double(index) / sampleRate)
+            } / Double(frequencies.count))
+        }
     }
 }
