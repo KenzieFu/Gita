@@ -23,6 +23,21 @@ struct GitaLogicTests {
         precondition(ChordMatcher.matches(cChord, sampleRate: sampleRate, targets: [261.63, 329.63, 392, 523.25]), "C chord pitch content should match")
         precondition(!ChordMatcher.matches(a4, sampleRate: sampleRate, targets: [261.63, 329.63, 392, 523.25]), "A single pitch is not a C chord")
         precondition(!ChordMatcher.matches(Array(repeating: 0, count: 8_192), sampleRate: sampleRate, targets: [261.63, 329.63, 392, 523.25]), "Silence is not a chord")
+        let suite = "GitaLogicTests.\(UUID().uuidString)"
+        guard let isolatedDefaults = UserDefaults(suiteName: suite) else { fatalError("Unable to make isolated defaults") }
+        let progressStore = ProgressStore(defaults: isolatedDefaults)
+        progressStore.save(SetupProgress(instrument: .ukulele, tutorialComplete: true), for: "account-A")
+        precondition(progressStore.load(for: "account-A").destination == .ready)
+        precondition(progressStore.load(for: "account-B").destination == .instrumentChoice, "Progress must not cross Apple accounts")
+        isolatedDefaults.removePersistentDomain(forName: suite)
+        var judge = TuningJudge()
+        precondition(!judge.ingest(PitchReading(frequency: 440, clarity: 0.95), target: 440, at: 0.0))
+        precondition(!judge.ingest(PitchReading(frequency: 440, clarity: 0.95), target: 440, at: 0.25))
+        precondition(judge.ingest(PitchReading(frequency: 440, clarity: 0.95), target: 440, at: 0.55), "Stable half-second in tune should complete")
+        judge.reset()
+        precondition(!judge.ingest(PitchReading(frequency: 440, clarity: 0.95), target: 440, at: 1.0))
+        precondition(!judge.ingest(nil, target: 440, at: 1.4))
+        precondition(!judge.ingest(PitchReading(frequency: 466.16, clarity: 0.95), target: 440, at: 1.8), "Wrong pitch must not complete")
         print("Gita logic tests passed")
     }
 
