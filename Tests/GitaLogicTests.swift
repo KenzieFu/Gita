@@ -20,6 +20,8 @@ struct GitaLogicTests {
         let lowE = tone(82.4069, count: 8_192, sampleRate: sampleRate)
         precondition(abs((PitchDetector.estimate(lowE, sampleRate: sampleRate)?.frequency ?? 0) - 82.4069) < 2, "Low guitar E2 must be detected")
         let cChord = mixture([261.63, 329.63, 392, 523.25], count: 8_192, sampleRate: sampleRate)
+        let chordPitch = PitchDetector.estimate(cChord, sampleRate: sampleRate)
+        precondition(chordPitch == nil || chordPitch!.clarity < 0.84, "A multi-note strum must not count as a clear single pitch")
         precondition(ChordMatcher.matches(cChord, sampleRate: sampleRate, targets: [261.63, 329.63, 392, 523.25]), "C chord pitch content should match")
         precondition(!ChordMatcher.matches(a4, sampleRate: sampleRate, targets: [261.63, 329.63, 392, 523.25]), "A single pitch is not a C chord")
         precondition(!ChordMatcher.matches(Array(repeating: 0, count: 8_192), sampleRate: sampleRate, targets: [261.63, 329.63, 392, 523.25]), "Silence is not a chord")
@@ -51,6 +53,11 @@ struct GitaLogicTests {
         precondition(!lessonJudge.matches(a4, sampleRate: sampleRate, target: Instrument.ukulele.lesson[2]), "One note cannot pass a chord lesson")
         lessonJudge.reset()
         precondition(lessonJudge.matches(cChord, sampleRate: sampleRate, target: Instrument.ukulele.lesson[2]), "Chord content with an attack should pass")
+        lessonJudge.reset()
+        lessonJudge.observe(cChord)
+        precondition(!lessonJudge.matches(cChord, sampleRate: sampleRate, target: Instrument.ukulele.lesson[2]), "A chord held before the cue is not a new strum")
+        lessonJudge.observe(Array(repeating: 0, count: 8_192))
+        precondition(lessonJudge.matches(cChord, sampleRate: sampleRate, target: Instrument.ukulele.lesson[2]), "A fresh strum after silence is accepted")
         print("Gita logic tests passed")
     }
 

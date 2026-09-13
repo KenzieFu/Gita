@@ -54,7 +54,12 @@ struct TutorialView: View {
             }
         }
         .onReceive(microphone.$latestSamples) { samples in
-            guard isArmed, countIn == 0, microphone.state == .listening, !samples.isEmpty else { return }
+            guard microphone.state == .listening, !samples.isEmpty else { return }
+            if countIn > 0 {
+                judge.observe(samples)
+                return
+            }
+            guard isArmed else { return }
             if judge.matches(samples, sampleRate: microphone.sampleRate, target: target) {
                 isArmed = false
                 feedback = target.kind == .chord ? "Sound match! Nice strum." : "Note matched! Nice work."
