@@ -1,61 +1,123 @@
-//
-//  ContentView.swift
-//  Gita
-//
-//  Created by Kenzie Fubrianto on 13/09/26.
-//
-
 import SwiftUI
-import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @StateObject private var account = AppleSession()
+    @StateObject private var microphone = Microphone()
+    @State private var progress = SetupProgress()
+    @State private var route: SetupRoute = .welcome
+    @State private var started = false
+    @State private var returningFromReadyRetune = false
+
+    private let store = ProgressStore()
 
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
+        Group {
+            if account.status == .checking {
+                StageShell(step: "Loading", title: "Finding your beat…", subtitle: "Checking your Apple account on this device.") {
+                    ProgressView().tint(ArcadeTheme.cyan)
+                } trailing: {
+                    NeonNote(symbol: "waveform.path", label: "GITA")
                 }
-                .onDelete(perform: deleteItems)
+            } else {
+                stage
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
+        }
+        .preferredColorScheme(.dark)
+        .onAppear { account.refreshCredentialState() }
+        .onChange(of: account.status) { _, status in
+            switch status {
+            case .signedIn:
+                if let id = account.userID {
+                    progress = store.load(for: id)
+                    route = SetupPolicy.route(userID: id, progress: progress, started: started)
                 }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
+            case .signedOut, .error:
+                route = SetupPolicy.route(userID: nil, progress: progress, started: started)
+            case .checking:
+                break
             }
-        } detail: {
-            Text("Select an item")
+        }
+        .onChange(of: route) { oldRoute, newRoute in
+            if oldRoute.usesMicrophone { microphone.stop() }
+            if newRoute.usesMicrophone { Task { await microphone.start() } }
         }
     }
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
+    @ViewBuilder private var stage: some View {
+        switch route {
+        case .welcome:
+            WelcomeView {
+                started = true
+                route = .signIn
+            }
+        case .signIn:
+            SignInView(errorMessage: errorMessage, onCompletion: account.handle) {
+                started = false
+                route = .welcome
+            }
+        case .instrumentChoice:
+            InstrumentChoiceView { instrument in
+                progress.choose(instrument)
+                saveProgress()
+                returningFromReadyRetune = false
+                route = .tuning
+            }
+        case .tuning:
+            if let instrument = progress.instrument {
+                TunerView(instrument: instrument, microphone: microphone, completed: progress.completedTuning) { tuned in
+                    progress.completedTuning = tuned
+                    saveProgress()
+                } onComplete: {
+                    route = returningFromReadyRetune ? .ready : .tutorial
+                    returningFromReadyRetune = false
+                } onBack: {
+                    route = .instrumentChoice
+                }
+            }
+        case .tutorial:
+            if let instrument = progress.instrument {
+                TutorialView(instrument: instrument, microphone: microphone, initialStep: progress.lessonStep) { nextStep in
+                    progress.lessonStep = nextStep
+                    saveProgress()
+                } onComplete: {
+                    progress.tutorialComplete = true
+                    progress.lessonStep = 3
+                    saveProgress()
+                    route = .ready
+                } onBack: {
+                    route = .tuning
+                }
+            }
+        case .ready:
+            if let instrument = progress.instrument {
+                ReadyView(instrument: instrument) {
+                    progress.completedTuning = []
+                    saveProgress()
+                    returningFromReadyRetune = true
+                    route = .tuning
+                } onReplay: {
+                    progress.tutorialComplete = false
+                    progress.lessonStep = 0
+                    saveProgress()
+                    route = .tutorial
+                } onSwitch: {
+                    route = .instrumentChoice
+                }
+            }
         }
     }
 
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
-        }
+    private var errorMessage: String? {
+        if case .error(let message) = account.status { return message }
+        return nil
+    }
+
+    private func saveProgress() {
+        guard let id = account.userID else { return }
+        store.save(progress, for: id)
     }
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }

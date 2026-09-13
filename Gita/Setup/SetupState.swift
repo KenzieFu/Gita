@@ -7,6 +7,8 @@ enum SetupRoute: String, Codable {
     case tuning
     case tutorial
     case ready
+
+    var usesMicrophone: Bool { self == .tuning || self == .tutorial }
 }
 
 struct SetupProgress: Codable {
@@ -34,5 +36,12 @@ struct SetupProgress: Codable {
         tutorialComplete = false
         completedTuning = []
         lessonStep = 0
+    }
+}
+
+enum SetupPolicy {
+    static func route(userID: String?, progress: SetupProgress, started: Bool) -> SetupRoute {
+        guard userID != nil else { return started ? .signIn : .welcome }
+        return progress.destination
     }
 }
