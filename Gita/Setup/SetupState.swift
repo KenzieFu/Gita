@@ -41,7 +41,11 @@ struct SetupProgress: Codable {
 
 enum SetupPolicy {
     static func route(userID: String?, progress: SetupProgress, started: Bool) -> SetupRoute {
-        guard userID != nil else { return started ? .signIn : .welcome }
+        route(guestMode: false, userID: userID, progress: progress, started: started)
+    }
+
+    static func route(guestMode: Bool, userID: String?, progress: SetupProgress, started: Bool) -> SetupRoute {
+        guard guestMode || userID != nil else { return started ? .signIn : .welcome }
         return progress.destination
     }
 }

@@ -6,6 +6,7 @@ struct ContentView: View {
     @State private var progress = SetupProgress()
     @State private var route: SetupRoute = .welcome
     @State private var started = false
+    @State private var guestMode = false
     @State private var returningFromReadyRetune = false
 
     private let store = ProgressStore()
@@ -13,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         Group {
             if account.status == .checking {
-                StageShell(step: "Loading", title: "Finding your beat…", subtitle: "Checking your Apple account on this device.") {
+                StageShell(step: "Loading", title: "Finding your beat…", subtitle: "Loading your player setup on this device.") {
                     ProgressView().tint(ArcadeTheme.cyan)
                 } trailing: {
                     NeonNote(symbol: "waveform.path", label: "GITA")
@@ -23,16 +24,24 @@ struct ContentView: View {
             }
         }
         .preferredColorScheme(.dark)
-        .onAppear { account.refreshCredentialState() }
+        .onAppear {
+            guestMode = store.isGuestModeEnabled
+            account.refreshCredentialState()
+        }
         .onChange(of: account.status) { _, status in
             switch status {
             case .signedIn:
                 if let id = account.userID {
+                    store.setGuestModeEnabled(false)
+                    guestMode = false
                     progress = store.load(for: id)
-                    route = SetupPolicy.route(userID: id, progress: progress, started: started)
+                    route = SetupPolicy.route(guestMode: false, userID: id, progress: progress, started: started)
                 }
             case .signedOut, .error:
-                route = SetupPolicy.route(userID: nil, progress: progress, started: started)
+                if guestMode {
+                    progress = store.loadGuest()
+                }
+                route = SetupPolicy.route(guestMode: guestMode, userID: nil, progress: progress, started: started)
             case .checking:
                 break
             }
@@ -52,6 +61,11 @@ struct ContentView: View {
             }
         case .signIn:
             SignInView(errorMessage: errorMessage, onCompletion: account.handle) {
+                store.setGuestModeEnabled(true)
+                guestMode = true
+                progress = store.loadGuest()
+                route = SetupPolicy.route(guestMode: true, userID: nil, progress: progress, started: started)
+            } onBack: {
                 started = false
                 route = .welcome
             }
@@ -90,7 +104,7 @@ struct ContentView: View {
             }
         case .ready:
             if let instrument = progress.instrument {
-                ReadyView(instrument: instrument) {
+                ReadyView(instrument: instrument, isGuest: guestMode) {
                     progress.completedTuning = []
                     saveProgress()
                     returningFromReadyRetune = true
@@ -102,6 +116,11 @@ struct ContentView: View {
                     route = .tutorial
                 } onSwitch: {
                     route = .instrumentChoice
+                } onSignIn: {
+                    store.setGuestModeEnabled(false)
+                    guestMode = false
+                    started = true
+                    route = .signIn
                 }
             }
         }
@@ -113,8 +132,11 @@ struct ContentView: View {
     }
 
     private func saveProgress() {
-        guard let id = account.userID else { return }
-        store.save(progress, for: id)
+        if guestMode {
+            store.saveGuest(progress)
+        } else if let id = account.userID {
+            store.save(progress, for: id)
+        }
     }
 }
 
