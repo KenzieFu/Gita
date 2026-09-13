@@ -3,6 +3,14 @@ import Foundation
 @main
 struct GitaLogicTests {
     static func main() {
+        precondition(UkuleleTuning.allCases.count == 3, "The supported four-string layouts must be explicit")
+        precondition(UkuleleTuning.highG.openStrings.map(\.frequency) == [392, 261.63, 329.63, 440], "High-G targets must match open strings")
+        precondition(UkuleleTuning.lowG.openStrings.map(\.frequency) == [196, 261.63, 329.63, 440], "Low-G must use G3 rather than G4")
+        precondition(UkuleleTuning.baritone.openStrings.map(\.frequency) == [146.83, 196, 246.94, 329.63], "Baritone must use DGBE")
+        precondition(Instrument.ukulele.tuningTargets(nil).isEmpty, "Unknown ukulele tuning must not assume high-G")
+        precondition(Instrument.guitar.tuningTargets(nil).count == 6, "Guitar targets must remain available")
+        precondition(UkuleleTuning.lowG.lessons[2].frequencies.contains(196), "Low-G chord lesson must expect G3")
+        precondition(UkuleleTuning.baritone.lessons[2].frequencies == [146.83, 196, 246.94, 392], "Baritone G chord target must match its strings")
         precondition(Instrument.ukulele.openStrings.map(\.label) == ["G", "C", "E", "A"], "Ukulele order must match the screen")
         precondition(abs(Instrument.guitar.openStrings[0].frequency - 82.4069) < 0.02, "Low E must be E2")
         precondition(Instrument.ukulele.lesson.count == 3, "Ukulele has three guided exercises")

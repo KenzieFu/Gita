@@ -30,6 +30,16 @@ enum Instrument: String, Codable, CaseIterable, Identifiable {
     var displayName: String { self == .ukulele ? "Ukulele" : "Guitar" }
     var subtitle: String { self == .ukulele ? "4 strings · high-G tuning" : "6 strings · standard tuning" }
 
+    var stringCount: Int { self == .ukulele ? 4 : 6 }
+
+    func tuningTargets(_ tuning: UkuleleTuning?) -> [StringTarget] {
+        self == .ukulele ? (tuning?.openStrings ?? []) : openStrings
+    }
+
+    func lessonTargets(_ tuning: UkuleleTuning?) -> [LessonTarget] {
+        self == .ukulele ? (tuning?.lessons ?? []) : lesson
+    }
+
     var openStrings: [StringTarget] {
         switch self {
         case .ukulele:
