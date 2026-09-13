@@ -1,7 +1,7 @@
 # Gita first-run flow — design
 
 Date: 2026-09-13
-Status: approved in chat; awaiting written-spec review
+Status: approved in chat for implementation
 
 ## Purpose and scope
 
@@ -30,7 +30,7 @@ The existing starter's timestamp-list/SwiftData example is unrelated to Gita and
 
 ## Screen experience
 
-The app supports landscape-left and landscape-right on iPhone and iPad. Each stage uses a wide two-column composition: concise instructions and progress on one side, the active control or practice surface on the other. The visual system is an original arcade practice stage: deep indigo/near-black base, high-contrast cyan, magenta, and warm-yellow highlights, oversized note/fret targets, clear progress marks, and restrained beat-driven motion. Important text and targets remain readable at larger text sizes, and all steps work with touch and VoiceOver.
+The app supports landscape-left and landscape-right on iPhone and iPad. iPhone is landscape-only; iPad remains resizable and supports all orientations as required by modern iPadOS, keeping a wide two-column composition in landscape and stacking the columns in a narrow window. The visual system is an original arcade practice stage: deep indigo/near-black base, high-contrast cyan, magenta, and warm-yellow highlights, oversized note/fret targets, clear progress marks, and restrained beat-driven motion. Important text and targets remain readable at larger text sizes, and all steps work with touch and VoiceOver.
 
 - **Welcome:** one short statement explaining that the player will choose an instrument, tune it, and play a few notes. One “Start” action; no lengthy onboarding carousel.
 - **Sign-in:** Apple's unmodified native Sign in with Apple button. Show an in-context retry message on cancellation, credential failure, or missing capability; never replace failed sign-in with a pretend account.

@@ -19,6 +19,7 @@ final class Microphone: ObservableObject {
 
     private var engine: AVAudioEngine?
     private var interruptionObserver: NSObjectProtocol?
+    private var generation = 0
 
     init() {
         interruptionObserver = NotificationCenter.default.addObserver(
@@ -35,12 +36,15 @@ final class Microphone: ObservableObject {
 
     func start() async {
         guard state != .listening else { return }
+        generation += 1
+        let startGeneration = generation
         state = .requestingPermission
         let permitted = await withCheckedContinuation { continuation in
             AVAudioApplication.requestRecordPermission { granted in
                 continuation.resume(returning: granted)
             }
         }
+        guard generation == startGeneration else { return }
         guard permitted else {
             state = .denied
             return
@@ -64,6 +68,7 @@ final class Microphone: ObservableObject {
                 guard let channel = buffer.floatChannelData?[0] else { return }
                 let values = Array(UnsafeBufferPointer(start: channel, count: Int(buffer.frameLength)))
                 Task { @MainActor [weak self] in
+                    guard self?.generation == startGeneration else { return }
                     self?.latestSamples = values
                 }
             }
@@ -78,6 +83,7 @@ final class Microphone: ObservableObject {
     }
 
     func stop() {
+        generation += 1
         if let engine {
             engine.inputNode.removeTap(onBus: 0)
             engine.stop()
