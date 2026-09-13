@@ -23,6 +23,7 @@ struct TunerView: View {
 
     private var activeIndex: Int? { feedback?.stringIndex }
     private var cents: Double? { feedback?.cents }
+    private var zone: TuningZone { TuningZone.classify(cents) }
 
     var body: some View {
         GeometryReader { geometry in
@@ -69,7 +70,7 @@ struct TunerView: View {
                                 tuningMeter
                                 Text(direction)
                                     .font(.headline.weight(.bold))
-                                    .foregroundStyle(cents.map { abs($0) <= 10 } == true ? ArcadeTheme.cyan : ArcadeTheme.yellow)
+                                    .foregroundStyle(zone == .inTune ? ArcadeTheme.cyan : (zone == .flat || zone == .sharp ? ArcadeTheme.pink : ArcadeTheme.yellow))
                                 microphoneStatus
                             }
                         }
@@ -99,9 +100,14 @@ struct TunerView: View {
     }
 
     private var direction: String {
-        guard let cents else { return "Pluck an open string" }
-        if abs(cents) <= 10 { return "In tune — hold it steady" }
-        return cents < 0 ? "Too low — tighten a little" : "Too high — loosen a little"
+        switch zone {
+        case .waiting: "Pluck an open string"
+        case .flat: "Too low — tighten a little"
+        case .closeFlat: "Close — tighten a little"
+        case .inTune: "In tune — hold it steady"
+        case .closeSharp: "Close — loosen a little"
+        case .sharp: "Too high — loosen a little"
+        }
     }
 
     private var tuningMeter: some View {
@@ -109,6 +115,12 @@ struct TunerView: View {
             GeometryReader { geometry in
                 ZStack {
                     RoundedRectangle(cornerRadius: 16).fill(ArcadeTheme.background)
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(ArcadeTheme.yellow.opacity(0.14))
+                        .frame(width: (geometry.size.width - 44) * CGFloat(TuningZone.closeCents / 60), height: 66)
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(ArcadeTheme.cyan.opacity(0.15))
+                        .frame(width: (geometry.size.width - 44) * CGFloat(TuningZone.inTuneCents / 60), height: 66)
                     ForEach(0..<13) { mark in
                         Rectangle()
                             .fill(.white.opacity(mark == 6 ? 0.5 : 0.12))
@@ -120,19 +132,19 @@ struct TunerView: View {
                         .frame(width: 34, height: 34)
                     if let cents {
                         Circle()
-                            .fill(abs(cents) <= 10 ? ArcadeTheme.cyan : ArcadeTheme.pink)
+                            .fill(zone == .inTune ? ArcadeTheme.cyan : (zone == .closeFlat || zone == .closeSharp ? ArcadeTheme.yellow : ArcadeTheme.pink))
                             .frame(width: 18, height: 18)
                             .offset(x: CGFloat(max(-60, min(60, cents)) / 60) * (geometry.size.width / 2 - 22))
                     }
                 }
             }
             .frame(height: 76)
-            HStack { Text("♭  TOO LOW"); Spacer(); Text("IN TUNE"); Spacer(); Text("TOO HIGH  ♯") }
-                .font(.caption.monospaced().weight(.bold))
+            HStack { Text("♭ LOW"); Spacer(); Text("CLOSE"); Spacer(); Text("IN TUNE"); Spacer(); Text("CLOSE"); Spacer(); Text("HIGH ♯") }
+                .font(.caption2.monospaced().weight(.bold))
                 .foregroundStyle(ArcadeTheme.muted)
         }
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel(cents.map { abs($0) <= 10 ? "In tune" : ($0 < 0 ? "Too low" : "Too high") } ?? "Waiting for an open string")
+        .accessibilityLabel(direction)
     }
 
     @ViewBuilder private var microphoneStatus: some View {
