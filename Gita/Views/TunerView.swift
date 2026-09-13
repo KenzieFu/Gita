@@ -8,10 +8,9 @@ struct TunerView: View {
     let onComplete: () -> Void
     let onBack: () -> Void
 
-    @State private var selectedIndex = 0
     @State private var completed: Set<Int>
-    @State private var reading: PitchReading?
-    @State private var judge = TuningJudge()
+    @State private var feedback: AutoTuningFeedback?
+    @State private var autoTuner = AutoTuner()
 
     init(instrument: Instrument, microphone: Microphone, completed: Set<Int>, onProgress: @escaping (Set<Int>) -> Void, onComplete: @escaping () -> Void, onBack: @escaping () -> Void) {
         self.instrument = instrument
@@ -20,105 +19,120 @@ struct TunerView: View {
         self.onComplete = onComplete
         self.onBack = onBack
         _completed = State(initialValue: completed)
-        _selectedIndex = State(initialValue: (0..<instrument.openStrings.count).first { !completed.contains($0) } ?? 0)
     }
 
-    private var target: StringTarget { instrument.openStrings[selectedIndex] }
-    private var cents: Double? { reading.map { PitchDetector.cents($0.frequency, target: target.frequency) } }
+    private var activeIndex: Int? { feedback?.stringIndex }
+    private var cents: Double? { feedback?.cents }
 
     var body: some View {
-        StageShell(step: "04 / Tune · \(completed.count)/\(instrument.openStrings.count)", title: "Tune one string.", subtitle: "Select a string, then pluck it alone. Hold a steady note to mark it in tune.") {
-            HStack(spacing: 8) {
-                ForEach(instrument.openStrings.indices, id: \.self) { index in
-                    Button {
-                        selectedIndex = index
-                        judge.reset()
-                        reading = nil
-                    } label: {
-                        VStack(spacing: 4) {
-                            Text(instrument.openStrings[index].label)
-                                .font(.title2.weight(.black))
-                            Text(completed.contains(index) ? "✓" : "\(index + 1)")
-                                .font(.caption.monospaced())
-                        }
-                        .frame(maxWidth: .infinity, minHeight: 68)
-                        .foregroundStyle(selectedIndex == index ? ArcadeTheme.background : ArcadeTheme.cyan)
-                        .background(selectedIndex == index ? ArcadeTheme.cyan : ArcadeTheme.panel, in: RoundedRectangle(cornerRadius: 14))
+        GeometryReader { geometry in
+            ScrollView {
+                VStack(spacing: 14) {
+                    HStack {
+                        Label("GITA", systemImage: "waveform.path")
+                            .font(.headline.weight(.black))
+                            .tracking(3)
+                            .foregroundStyle(.white)
+                        Spacer()
+                        Text("TUNE · \(completed.count)/\(instrument.openStrings.count)")
+                            .font(.caption.monospaced().weight(.bold))
+                            .foregroundStyle(ArcadeTheme.yellow)
                     }
-                    .buttonStyle(.plain)
-                    .accessibilityLabel("String \(index + 1), \(instrument.openStrings[index].label), \(completed.contains(index) ? "tuned" : "not yet tuned")")
+                    HStack(alignment: .top, spacing: 22) {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("Tune up.")
+                                .font(.system(size: 34, weight: .black, design: .rounded))
+                                .foregroundStyle(.white)
+                            Text("Pluck one string with no frets pressed. Gita finds the note.")
+                                .font(.subheadline)
+                                .foregroundStyle(ArcadeTheme.muted)
+                            TuningHeadstock(instrument: instrument, highlighted: activeIndex, completed: completed)
+                            HStack {
+                                Text("No buttons — just play")
+                                    .font(.caption)
+                                    .foregroundStyle(ArcadeTheme.muted)
+                                Spacer()
+                                Button("Change instrument", action: onBack)
+                                    .font(.caption.weight(.bold))
+                                    .foregroundStyle(ArcadeTheme.cyan)
+                            }
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        StagePanel {
+                            VStack(alignment: .leading, spacing: 10) {
+                                Text(activeIndex.map { "LIKELY OPEN STRING \($0 + 1)" } ?? "LISTENING FOR A STRING")
+                                    .font(.caption.monospaced().weight(.bold))
+                                    .foregroundStyle(ArcadeTheme.yellow)
+                                Text(activeIndex.map { instrument.openStrings[$0].label } ?? "—")
+                                    .font(.system(size: 52, weight: .black, design: .rounded))
+                                    .foregroundStyle(.white)
+                                tuningMeter
+                                Text(direction)
+                                    .font(.headline.weight(.bold))
+                                    .foregroundStyle(cents.map { abs($0) <= 10 } == true ? ArcadeTheme.cyan : ArcadeTheme.yellow)
+                                microphoneStatus
+                            }
+                        }
+                        .frame(maxWidth: .infinity)
+                    }
                 }
+                .padding(.horizontal, 22)
+                .padding(.vertical, 14)
+                .frame(minHeight: geometry.size.height, alignment: .top)
             }
-            Text("Play one string at a time. The mic hears pitch, not which string you touched; chords and noise will not finish tuning.")
-                .font(.footnote)
-                .foregroundStyle(ArcadeTheme.muted)
-            Button("Change instrument", action: onBack)
-                .foregroundStyle(ArcadeTheme.muted)
-        } trailing: {
-            StagePanel {
-                VStack(spacing: 13) {
-                    Text("STRING \(selectedIndex + 1) · \(target.label)")
-                        .font(.caption.monospaced().weight(.black))
-                        .foregroundStyle(ArcadeTheme.yellow)
-                    Text(String(format: "%.2f Hz", target.frequency))
-                        .font(.title.weight(.black).monospacedDigit())
-                        .foregroundStyle(.white)
-                    Text(reading.map { String(format: "Heard %.1f Hz", $0.frequency) } ?? "Pluck the string")
-                        .font(.headline)
-                        .foregroundStyle(ArcadeTheme.cyan)
-                    tuningMeter
-                    Text(direction)
-                        .font(.subheadline.weight(.bold))
-                        .foregroundStyle(ArcadeTheme.yellow)
-                    microphoneStatus
-                }
-            }
+            .scrollIndicators(.hidden)
+            .background(ArcadeTheme.background.ignoresSafeArea())
         }
         .onReceive(microphone.$latestSamples) { samples in
             guard !samples.isEmpty, microphone.state == .listening else { return }
             let newReading = PitchDetector.estimate(samples, sampleRate: microphone.sampleRate)
-            reading = newReading
-            if judge.ingest(newReading, target: target.frequency, at: ProcessInfo.processInfo.systemUptime) {
-                completed.insert(selectedIndex)
+            let result = autoTuner.ingest(newReading, targets: instrument.openStrings, at: ProcessInfo.processInfo.systemUptime)
+            withAnimation(.easeOut(duration: 0.16)) { feedback = result }
+            if let tunedIndex = result.newlyTunedIndex, !completed.contains(tunedIndex) {
+                completed.insert(tunedIndex)
                 onProgress(completed)
-                judge.reset()
                 if completed.count == instrument.openStrings.count {
                     onComplete()
-                } else if let next = (0..<instrument.openStrings.count).first(where: { !completed.contains($0) }) {
-                    selectedIndex = next
-                    reading = nil
                 }
             }
         }
     }
 
     private var direction: String {
-        guard let cents else { return "Waiting for a clear note" }
-        if abs(cents) <= 10 { return "Hold it steady…" }
+        guard let cents else { return "Pluck an open string" }
+        if abs(cents) <= 10 { return "In tune — hold it steady" }
         return cents < 0 ? "Too low — tighten a little" : "Too high — loosen a little"
     }
 
     private var tuningMeter: some View {
-        VStack(spacing: 6) {
+        VStack(spacing: 8) {
             GeometryReader { geometry in
-                ZStack(alignment: .leading) {
-                    Capsule().fill(.white.opacity(0.12))
-                    Capsule().fill(ArcadeTheme.cyan).frame(width: 4)
-                        .offset(x: geometry.size.width / 2)
+                ZStack {
+                    RoundedRectangle(cornerRadius: 16).fill(ArcadeTheme.background)
+                    ForEach(0..<13) { mark in
+                        Rectangle()
+                            .fill(.white.opacity(mark == 6 ? 0.5 : 0.12))
+                            .frame(width: mark == 6 ? 2 : 1, height: mark == 6 ? 66 : 38)
+                            .offset(x: (CGFloat(mark) / 12 - 0.5) * (geometry.size.width - 28))
+                    }
+                    Circle()
+                        .stroke(ArcadeTheme.cyan, lineWidth: 3)
+                        .frame(width: 34, height: 34)
                     if let cents {
-                        Circle().fill(abs(cents) <= 10 ? ArcadeTheme.yellow : ArcadeTheme.pink)
+                        Circle()
+                            .fill(abs(cents) <= 10 ? ArcadeTheme.cyan : ArcadeTheme.pink)
                             .frame(width: 18, height: 18)
-                            .offset(x: max(0, min(geometry.size.width - 18, geometry.size.width / 2 + CGFloat(cents / 50) * geometry.size.width / 2 - 9)))
+                            .offset(x: CGFloat(max(-60, min(60, cents)) / 60) * (geometry.size.width / 2 - 22))
                     }
                 }
             }
-            .frame(height: 18)
-            HStack { Text("FLAT"); Spacer(); Text("IN TUNE"); Spacer(); Text("SHARP") }
-                .font(.caption2.monospaced().weight(.bold))
+            .frame(height: 76)
+            HStack { Text("♭  TOO LOW"); Spacer(); Text("IN TUNE"); Spacer(); Text("TOO HIGH  ♯") }
+                .font(.caption.monospaced().weight(.bold))
                 .foregroundStyle(ArcadeTheme.muted)
         }
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel(cents.map { String(format: "%.0f cents %@", abs($0), $0 < 0 ? "flat" : "sharp") } ?? "Waiting for pitch")
+        .accessibilityLabel(cents.map { abs($0) <= 10 ? "In tune" : ($0 < 0 ? "Too low" : "Too high") } ?? "Waiting for an open string")
     }
 
     @ViewBuilder private var microphoneStatus: some View {
@@ -144,5 +158,70 @@ struct TunerView: View {
                 StageButton(title: "Try microphone again", symbol: "arrow.clockwise", secondary: true) { Task { await microphone.start() } }
             }
         }
+    }
+}
+
+private struct TuningHeadstock: View {
+    let instrument: Instrument
+    let highlighted: Int?
+    let completed: Set<Int>
+
+    private var leftStrings: [Int] { instrument == .ukulele ? [1, 0] : [2, 1, 0] }
+    private var rightStrings: [Int] { instrument == .ukulele ? [2, 3] : [3, 4, 5] }
+
+    var body: some View {
+        HStack(spacing: 12) {
+            VStack(spacing: 12) {
+                ForEach(leftStrings, id: \.self) { badge(for: $0) }
+            }
+            headstock
+            VStack(spacing: 12) {
+                ForEach(rightStrings, id: \.self) { badge(for: $0) }
+            }
+        }
+        .frame(maxWidth: .infinity)
+    }
+
+    private func badge(for index: Int) -> some View {
+        let isActive = highlighted == index
+        let isComplete = completed.contains(index)
+        return VStack(spacing: 2) {
+            Text(instrument.openStrings[index].label)
+                .font(.title2.weight(.black))
+            Text(isComplete ? "✓" : "\(index + 1)")
+                .font(.caption.monospaced().weight(.bold))
+        }
+        .frame(width: 58, height: 50)
+        .foregroundStyle(isActive ? ArcadeTheme.background : (isComplete ? ArcadeTheme.cyan : .white))
+        .background(isActive ? ArcadeTheme.cyan : ArcadeTheme.panel, in: RoundedRectangle(cornerRadius: 16))
+        .overlay(RoundedRectangle(cornerRadius: 16).stroke(ArcadeTheme.cyan.opacity(isActive || isComplete ? 1 : 0.35), lineWidth: 2))
+        .accessibilityLabel("String \(index + 1), \(instrument.openStrings[index].label), \(isActive ? "detected" : isComplete ? "tuned" : "not tuned")")
+    }
+
+    private var headstock: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 28)
+                .fill(LinearGradient(colors: [Color(red: 0.54, green: 0.27, blue: 0.23), Color(red: 0.27, green: 0.14, blue: 0.20)], startPoint: .topLeading, endPoint: .bottomTrailing))
+                .overlay(RoundedRectangle(cornerRadius: 28).stroke(ArcadeTheme.yellow.opacity(0.6), lineWidth: 2))
+            HStack(spacing: 16) {
+                ForEach(0..<instrument.openStrings.count, id: \.self) { _ in
+                    Rectangle().fill(.white.opacity(0.6)).frame(width: 1)
+                }
+            }
+            .padding(.vertical, 18)
+            VStack {
+                ForEach(0..<leftStrings.count, id: \.self) { _ in
+                    HStack {
+                        Circle().fill(ArcadeTheme.muted).frame(width: 15, height: 15)
+                        Spacer()
+                        Circle().fill(ArcadeTheme.muted).frame(width: 15, height: 15)
+                    }
+                    Spacer(minLength: 0)
+                }
+            }
+            .padding(16)
+        }
+        .frame(width: 106, height: instrument == .ukulele ? 140 : 165)
+        .accessibilityHidden(true)
     }
 }
