@@ -36,6 +36,13 @@ enum Instrument: String, Codable, CaseIterable, Identifiable {
         self == .ukulele ? (tuning?.openStrings ?? []) : guitarStrings
     }
 
+    func tuningDisplayLabels(_ tuning: UkuleleTuning?) -> [String] {
+        if self == .ukulele {
+            return (tuning ?? .highG).openStrings.map(\.label)
+        }
+        return guitarStrings.map(\.label)
+    }
+
     func lessonTargets(_ tuning: UkuleleTuning?) -> [LessonTarget] {
         self == .ukulele ? (tuning?.lessons ?? []) : guitarLessons
     }

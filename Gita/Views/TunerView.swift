@@ -33,7 +33,7 @@ struct TunerView: View {
     private var cents: Double? { instrument == .ukulele ? ukuleleFeedback?.cents : feedback?.cents }
     private var zone: TuningZone { TuningZone.classify(cents) }
     private var targets: [StringTarget] { instrument.tuningTargets(currentTuning) }
-    private var headstockLabels: [String] { instrument == .ukulele && currentTuning == nil ? Array(repeating: "?", count: 4) : targets.map(\.label) }
+    private var headstockLabels: [String] { instrument.tuningDisplayLabels(currentTuning) }
     private var displayNote: String {
         if instrument == .ukulele { return ukuleleFeedback?.detectedNote ?? "—" }
         return activeIndex.map { targets[$0].label } ?? "—"

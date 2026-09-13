@@ -160,19 +160,26 @@ struct UkuleleAutoTuner {
     }
 
     private mutating func accumulateValidTime(at time: TimeInterval) -> Bool {
-        if let invalidSince, time - invalidSince > 0.2 { resetHold() }
-        invalidSince = nil
-        if let lastValidAt {
-            if time - lastValidAt > 0.3 { resetHold() }
-            else { validDuration += max(0, time - lastValidAt) }
+        if let invalidSince {
+            if time - invalidSince > 0.2 {
+                resetHold()
+            } else if let lastValidAt {
+                validDuration += max(0, invalidSince - lastValidAt)
+            }
+        } else if let lastValidAt {
+            if time - lastValidAt > 0.3 {
+                resetHold()
+            } else {
+                validDuration += max(0, time - lastValidAt)
+            }
         }
+        invalidSince = nil
         lastValidAt = time
         return validDuration >= 0.5
     }
 
     private mutating func pause(at time: TimeInterval) {
         if invalidSince == nil { invalidSince = time }
-        lastValidAt = nil
         if time - (invalidSince ?? time) > 0.2 {
             resetHold()
             clearActiveTarget()
