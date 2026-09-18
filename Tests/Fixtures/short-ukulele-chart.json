@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "test-song",
+  "version": 1,
+  "title": "Two Notes",
+  "style": "singleNote",
+  "difficulty": "easy",
+  "chordNames": [],
+  "instrument": "ukulele",
+  "stringLabels": ["G", "C", "E", "A"],
+  "openFrequencies": [392, 261.63, 329.63, 440],
+  "maxFret": 12,
+  "nominalBPM": 80,
+  "beatsPerBar": 4,
+  "firstBeatOffsetSeconds": 0,
+  "audioDurationSeconds": 4,
+  "audioSHA256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "notes": [
+    {"id": "n1", "onsetSeconds": 0.5, "durationSeconds": 0.25, "stringIndex": 3, "fret": 0},
+    {"id": "n2", "onsetSeconds": 1.25, "durationSeconds": 0.25, "stringIndex": 2, "fret": 1}
+  ],
+  "sections": [
+    {"id": "intro", "title": "Intro", "startSeconds": 0, "endSeconds": 2}
+  ]
+}

@@ -1,0 +1,2875 @@
+{
+  "schemaVersion": 2,
+  "id": "count-on-me-bruno-mars",
+  "version": 1,
+  "title": "Count On Me — Bruno Mars",
+  "style": "basicStrum",
+  "difficulty": "medium",
+  "instrument": "ukulele",
+  "chordNames": [
+    "C",
+    "Em",
+    "Am",
+    "G",
+    "F",
+    "Dm"
+  ],
+  "maxFret": 12,
+  "nominalBPM": 92,
+  "beatsPerBar": 4,
+  "firstBeatOffsetSeconds": 0,
+  "audioDurationSeconds": 197.784,
+  "audioSHA256": "99ea24ecb040b42b1079d350de6764ec051fede6d1120c5cdd2aef22bec3f5f0",
+  "notes": [
+    {
+      "id": "eaa1818c-bb0b-4a6b-80d5-b1fdea7b46ac-s0",
+      "onsetSeconds": 4,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "eaa1818c-bb0b-4a6b-80d5-b1fdea7b46ac-s1",
+      "onsetSeconds": 4,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "eaa1818c-bb0b-4a6b-80d5-b1fdea7b46ac-s2",
+      "onsetSeconds": 4,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "eaa1818c-bb0b-4a6b-80d5-b1fdea7b46ac-s3",
+      "onsetSeconds": 4,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 3
+    },
+    {
+      "id": "57cc3a85-4139-44fb-bb30-7ddb3128ac35-s0",
+      "onsetSeconds": 6,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "57cc3a85-4139-44fb-bb30-7ddb3128ac35-s1",
+      "onsetSeconds": 6,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "57cc3a85-4139-44fb-bb30-7ddb3128ac35-s2",
+      "onsetSeconds": 6,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "57cc3a85-4139-44fb-bb30-7ddb3128ac35-s3",
+      "onsetSeconds": 6,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 3
+    },
+    {
+      "id": "12b9d75e-7ad5-4200-b64c-5fb77c5394dc-s0",
+      "onsetSeconds": 9,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "12b9d75e-7ad5-4200-b64c-5fb77c5394dc-s1",
+      "onsetSeconds": 9,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 4
+    },
+    {
+      "id": "12b9d75e-7ad5-4200-b64c-5fb77c5394dc-s2",
+      "onsetSeconds": 9,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "12b9d75e-7ad5-4200-b64c-5fb77c5394dc-s3",
+      "onsetSeconds": 9,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "2ea55af9-3a7b-4a0f-b7e1-d46f505d2731-s0",
+      "onsetSeconds": 12,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "2ea55af9-3a7b-4a0f-b7e1-d46f505d2731-s1",
+      "onsetSeconds": 12,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "2ea55af9-3a7b-4a0f-b7e1-d46f505d2731-s2",
+      "onsetSeconds": 12,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "2ea55af9-3a7b-4a0f-b7e1-d46f505d2731-s3",
+      "onsetSeconds": 12,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "90df7b7b-4e0f-4c3b-b5c8-ad3c2c1d7782-s0",
+      "onsetSeconds": 13,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "90df7b7b-4e0f-4c3b-b5c8-ad3c2c1d7782-s1",
+      "onsetSeconds": 13,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 2
+    },
+    {
+      "id": "90df7b7b-4e0f-4c3b-b5c8-ad3c2c1d7782-s2",
+      "onsetSeconds": 13,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "90df7b7b-4e0f-4c3b-b5c8-ad3c2c1d7782-s3",
+      "onsetSeconds": 13,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "38e7d346-3199-4824-a23f-38e23ac1f363-s0",
+      "onsetSeconds": 14,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "38e7d346-3199-4824-a23f-38e23ac1f363-s1",
+      "onsetSeconds": 14,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "38e7d346-3199-4824-a23f-38e23ac1f363-s2",
+      "onsetSeconds": 14,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 1
+    },
+    {
+      "id": "38e7d346-3199-4824-a23f-38e23ac1f363-s3",
+      "onsetSeconds": 14,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "5d297baf-b06d-4291-b1a8-0b6af39e3b1f-s0",
+      "onsetSeconds": 17,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "5d297baf-b06d-4291-b1a8-0b6af39e3b1f-s1",
+      "onsetSeconds": 17,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "5d297baf-b06d-4291-b1a8-0b6af39e3b1f-s2",
+      "onsetSeconds": 17,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "5d297baf-b06d-4291-b1a8-0b6af39e3b1f-s3",
+      "onsetSeconds": 17,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 3
+    },
+    {
+      "id": "b2b7ac57-f846-4502-8a30-a700445ec311-s0",
+      "onsetSeconds": 20,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "b2b7ac57-f846-4502-8a30-a700445ec311-s1",
+      "onsetSeconds": 20,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 4
+    },
+    {
+      "id": "b2b7ac57-f846-4502-8a30-a700445ec311-s2",
+      "onsetSeconds": 20,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "b2b7ac57-f846-4502-8a30-a700445ec311-s3",
+      "onsetSeconds": 20,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "7967d887-0911-457f-be8c-eba1ab549c54-s0",
+      "onsetSeconds": 23,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "7967d887-0911-457f-be8c-eba1ab549c54-s1",
+      "onsetSeconds": 23,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "7967d887-0911-457f-be8c-eba1ab549c54-s2",
+      "onsetSeconds": 23,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "7967d887-0911-457f-be8c-eba1ab549c54-s3",
+      "onsetSeconds": 23,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "4378cf7e-6e20-47ed-927e-292f842aa859-s0",
+      "onsetSeconds": 24,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "4378cf7e-6e20-47ed-927e-292f842aa859-s1",
+      "onsetSeconds": 24,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 2
+    },
+    {
+      "id": "4378cf7e-6e20-47ed-927e-292f842aa859-s2",
+      "onsetSeconds": 24,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "4378cf7e-6e20-47ed-927e-292f842aa859-s3",
+      "onsetSeconds": 24,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "f8135ae5-1c2a-4efc-95bb-08aed73a2ccb-s0",
+      "onsetSeconds": 25,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "f8135ae5-1c2a-4efc-95bb-08aed73a2ccb-s1",
+      "onsetSeconds": 25,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "f8135ae5-1c2a-4efc-95bb-08aed73a2ccb-s2",
+      "onsetSeconds": 25,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 1
+    },
+    {
+      "id": "f8135ae5-1c2a-4efc-95bb-08aed73a2ccb-s3",
+      "onsetSeconds": 25,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "1372a5a2-66e4-4ef5-8c3c-3b20789ab2c6-s0",
+      "onsetSeconds": 29,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "1372a5a2-66e4-4ef5-8c3c-3b20789ab2c6-s1",
+      "onsetSeconds": 29,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 2
+    },
+    {
+      "id": "1372a5a2-66e4-4ef5-8c3c-3b20789ab2c6-s2",
+      "onsetSeconds": 29,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 1
+    },
+    {
+      "id": "1372a5a2-66e4-4ef5-8c3c-3b20789ab2c6-s3",
+      "onsetSeconds": 29,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "c16c62d6-1ec5-4ee2-baea-ebdffeb54512-s0",
+      "onsetSeconds": 31,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "c16c62d6-1ec5-4ee2-baea-ebdffeb54512-s1",
+      "onsetSeconds": 31,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 4
+    },
+    {
+      "id": "c16c62d6-1ec5-4ee2-baea-ebdffeb54512-s2",
+      "onsetSeconds": 31,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "c16c62d6-1ec5-4ee2-baea-ebdffeb54512-s3",
+      "onsetSeconds": 31,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "fde1966f-977d-4421-9eea-5c5271b0df4b-s0",
+      "onsetSeconds": 33,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "fde1966f-977d-4421-9eea-5c5271b0df4b-s1",
+      "onsetSeconds": 33,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "fde1966f-977d-4421-9eea-5c5271b0df4b-s2",
+      "onsetSeconds": 33,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 1
+    },
+    {
+      "id": "fde1966f-977d-4421-9eea-5c5271b0df4b-s3",
+      "onsetSeconds": 33,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "ca49cc0f-2326-43d6-9882-df050e3e4806-s0",
+      "onsetSeconds": 36,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "ca49cc0f-2326-43d6-9882-df050e3e4806-s1",
+      "onsetSeconds": 36,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 2
+    },
+    {
+      "id": "ca49cc0f-2326-43d6-9882-df050e3e4806-s2",
+      "onsetSeconds": 36,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "ca49cc0f-2326-43d6-9882-df050e3e4806-s3",
+      "onsetSeconds": 36,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "f3d07c8d-81c4-4311-9128-6c51460a8a29-s0",
+      "onsetSeconds": 38,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "f3d07c8d-81c4-4311-9128-6c51460a8a29-s1",
+      "onsetSeconds": 38,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "f3d07c8d-81c4-4311-9128-6c51460a8a29-s2",
+      "onsetSeconds": 38,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "f3d07c8d-81c4-4311-9128-6c51460a8a29-s3",
+      "onsetSeconds": 38,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 3
+    },
+    {
+      "id": "72670d40-3912-4020-aa19-2fc072eabfda-s0",
+      "onsetSeconds": 41,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "72670d40-3912-4020-aa19-2fc072eabfda-s1",
+      "onsetSeconds": 41,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 4
+    },
+    {
+      "id": "72670d40-3912-4020-aa19-2fc072eabfda-s2",
+      "onsetSeconds": 41,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "72670d40-3912-4020-aa19-2fc072eabfda-s3",
+      "onsetSeconds": 41,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "0c4300ff-d720-4431-a36e-af43c5b26205-s0",
+      "onsetSeconds": 44.51,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "0c4300ff-d720-4431-a36e-af43c5b26205-s1",
+      "onsetSeconds": 44.51,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "0c4300ff-d720-4431-a36e-af43c5b26205-s2",
+      "onsetSeconds": 44.51,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "0c4300ff-d720-4431-a36e-af43c5b26205-s3",
+      "onsetSeconds": 44.51,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "f13c5e53-1980-45ca-8803-327b630c338c-s0",
+      "onsetSeconds": 46,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "f13c5e53-1980-45ca-8803-327b630c338c-s1",
+      "onsetSeconds": 46,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "f13c5e53-1980-45ca-8803-327b630c338c-s2",
+      "onsetSeconds": 46,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 1
+    },
+    {
+      "id": "f13c5e53-1980-45ca-8803-327b630c338c-s3",
+      "onsetSeconds": 46,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "09ed2e0f-8c3e-4247-b384-45666c9753ea-s0",
+      "onsetSeconds": 49,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "09ed2e0f-8c3e-4247-b384-45666c9753ea-s1",
+      "onsetSeconds": 49,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "09ed2e0f-8c3e-4247-b384-45666c9753ea-s2",
+      "onsetSeconds": 49,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "09ed2e0f-8c3e-4247-b384-45666c9753ea-s3",
+      "onsetSeconds": 49,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 3
+    },
+    {
+      "id": "de78b746-63ed-4ac9-91e7-4b5cc5a11d2a-s0",
+      "onsetSeconds": 52,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "de78b746-63ed-4ac9-91e7-4b5cc5a11d2a-s1",
+      "onsetSeconds": 52,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 4
+    },
+    {
+      "id": "de78b746-63ed-4ac9-91e7-4b5cc5a11d2a-s2",
+      "onsetSeconds": 52,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "de78b746-63ed-4ac9-91e7-4b5cc5a11d2a-s3",
+      "onsetSeconds": 52,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "1ca3538f-5d5f-4df6-a17e-87656e89970d-s0",
+      "onsetSeconds": 55,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "1ca3538f-5d5f-4df6-a17e-87656e89970d-s1",
+      "onsetSeconds": 55,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "1ca3538f-5d5f-4df6-a17e-87656e89970d-s2",
+      "onsetSeconds": 55,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "1ca3538f-5d5f-4df6-a17e-87656e89970d-s3",
+      "onsetSeconds": 55,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "9d1e8ef4-747f-4eec-9bf8-81ff3d0c547d-s0",
+      "onsetSeconds": 56,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "9d1e8ef4-747f-4eec-9bf8-81ff3d0c547d-s1",
+      "onsetSeconds": 56,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 2
+    },
+    {
+      "id": "9d1e8ef4-747f-4eec-9bf8-81ff3d0c547d-s2",
+      "onsetSeconds": 56,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "9d1e8ef4-747f-4eec-9bf8-81ff3d0c547d-s3",
+      "onsetSeconds": 56,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "1ed15a61-c200-4ea6-8379-dc25f3f2f172-s0",
+      "onsetSeconds": 57,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "1ed15a61-c200-4ea6-8379-dc25f3f2f172-s1",
+      "onsetSeconds": 57,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "1ed15a61-c200-4ea6-8379-dc25f3f2f172-s2",
+      "onsetSeconds": 57,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 1
+    },
+    {
+      "id": "1ed15a61-c200-4ea6-8379-dc25f3f2f172-s3",
+      "onsetSeconds": 57,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "6cece809-1715-4ca2-a7ff-b2b94c94c0b4-s0",
+      "onsetSeconds": 60,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "6cece809-1715-4ca2-a7ff-b2b94c94c0b4-s1",
+      "onsetSeconds": 60,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "6cece809-1715-4ca2-a7ff-b2b94c94c0b4-s2",
+      "onsetSeconds": 60,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "6cece809-1715-4ca2-a7ff-b2b94c94c0b4-s3",
+      "onsetSeconds": 60,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 3
+    },
+    {
+      "id": "a0ced5fe-7dd9-4701-afe5-905a28d07fba-s0",
+      "onsetSeconds": 63,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "a0ced5fe-7dd9-4701-afe5-905a28d07fba-s1",
+      "onsetSeconds": 63,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 4
+    },
+    {
+      "id": "a0ced5fe-7dd9-4701-afe5-905a28d07fba-s2",
+      "onsetSeconds": 63,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "a0ced5fe-7dd9-4701-afe5-905a28d07fba-s3",
+      "onsetSeconds": 63,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "70f51495-0379-4308-99b5-9c026e2daa63-s0",
+      "onsetSeconds": 66,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "70f51495-0379-4308-99b5-9c026e2daa63-s1",
+      "onsetSeconds": 66,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "70f51495-0379-4308-99b5-9c026e2daa63-s2",
+      "onsetSeconds": 66,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "70f51495-0379-4308-99b5-9c026e2daa63-s3",
+      "onsetSeconds": 66,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "ea0ed418-acb9-4805-967b-5869378dd428-s0",
+      "onsetSeconds": 67,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "ea0ed418-acb9-4805-967b-5869378dd428-s1",
+      "onsetSeconds": 67,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 2
+    },
+    {
+      "id": "ea0ed418-acb9-4805-967b-5869378dd428-s2",
+      "onsetSeconds": 67,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "ea0ed418-acb9-4805-967b-5869378dd428-s3",
+      "onsetSeconds": 67,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "a13d1c03-6bb1-4ae8-b984-83383e44b6c5-s0",
+      "onsetSeconds": 69,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "a13d1c03-6bb1-4ae8-b984-83383e44b6c5-s1",
+      "onsetSeconds": 69,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "a13d1c03-6bb1-4ae8-b984-83383e44b6c5-s2",
+      "onsetSeconds": 69,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 1
+    },
+    {
+      "id": "a13d1c03-6bb1-4ae8-b984-83383e44b6c5-s3",
+      "onsetSeconds": 69,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "f67a5e42-fe33-4784-a0a1-b9d593f99f53-s0",
+      "onsetSeconds": 70,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "f67a5e42-fe33-4784-a0a1-b9d593f99f53-s1",
+      "onsetSeconds": 70,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 2
+    },
+    {
+      "id": "f67a5e42-fe33-4784-a0a1-b9d593f99f53-s2",
+      "onsetSeconds": 70,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "f67a5e42-fe33-4784-a0a1-b9d593f99f53-s3",
+      "onsetSeconds": 70,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "8a2925c2-7c93-4147-a868-794d2cdf02cf-s0",
+      "onsetSeconds": 71.6,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "8a2925c2-7c93-4147-a868-794d2cdf02cf-s1",
+      "onsetSeconds": 71.6,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "8a2925c2-7c93-4147-a868-794d2cdf02cf-s2",
+      "onsetSeconds": 71.6,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "8a2925c2-7c93-4147-a868-794d2cdf02cf-s3",
+      "onsetSeconds": 71.6,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 3
+    },
+    {
+      "id": "48024b16-346f-4519-a05c-069520ec9b4f-s0",
+      "onsetSeconds": 73,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "48024b16-346f-4519-a05c-069520ec9b4f-s1",
+      "onsetSeconds": 73,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 4
+    },
+    {
+      "id": "48024b16-346f-4519-a05c-069520ec9b4f-s2",
+      "onsetSeconds": 73,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "48024b16-346f-4519-a05c-069520ec9b4f-s3",
+      "onsetSeconds": 73,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "a83696e0-5189-4190-a12e-c55c57ae5b00-s0",
+      "onsetSeconds": 76,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "a83696e0-5189-4190-a12e-c55c57ae5b00-s1",
+      "onsetSeconds": 76,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "a83696e0-5189-4190-a12e-c55c57ae5b00-s2",
+      "onsetSeconds": 76,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "a83696e0-5189-4190-a12e-c55c57ae5b00-s3",
+      "onsetSeconds": 76,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "4cc652a6-645d-482d-9ac5-4464cd561b2b-s0",
+      "onsetSeconds": 79,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "4cc652a6-645d-482d-9ac5-4464cd561b2b-s1",
+      "onsetSeconds": 79,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 2
+    },
+    {
+      "id": "4cc652a6-645d-482d-9ac5-4464cd561b2b-s2",
+      "onsetSeconds": 79,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "4cc652a6-645d-482d-9ac5-4464cd561b2b-s3",
+      "onsetSeconds": 79,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "99ca05eb-68ec-48a7-a1de-813f173f8a78-s0",
+      "onsetSeconds": 80,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "99ca05eb-68ec-48a7-a1de-813f173f8a78-s1",
+      "onsetSeconds": 80,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "99ca05eb-68ec-48a7-a1de-813f173f8a78-s2",
+      "onsetSeconds": 80,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 1
+    },
+    {
+      "id": "99ca05eb-68ec-48a7-a1de-813f173f8a78-s3",
+      "onsetSeconds": 80,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "56d68c0b-bef7-4b72-8f4c-b2b3161a529d-s0",
+      "onsetSeconds": 82,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "56d68c0b-bef7-4b72-8f4c-b2b3161a529d-s1",
+      "onsetSeconds": 82,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "56d68c0b-bef7-4b72-8f4c-b2b3161a529d-s2",
+      "onsetSeconds": 82,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "56d68c0b-bef7-4b72-8f4c-b2b3161a529d-s3",
+      "onsetSeconds": 82,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 3
+    },
+    {
+      "id": "6dbb9de6-593d-431b-b85c-c11436d75521-s0",
+      "onsetSeconds": 85,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "6dbb9de6-593d-431b-b85c-c11436d75521-s1",
+      "onsetSeconds": 85,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 4
+    },
+    {
+      "id": "6dbb9de6-593d-431b-b85c-c11436d75521-s2",
+      "onsetSeconds": 85,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "6dbb9de6-593d-431b-b85c-c11436d75521-s3",
+      "onsetSeconds": 85,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "2b1be488-b6d5-4758-9e24-533f0aa95c24-s0",
+      "onsetSeconds": 87,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "2b1be488-b6d5-4758-9e24-533f0aa95c24-s1",
+      "onsetSeconds": 87,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "2b1be488-b6d5-4758-9e24-533f0aa95c24-s2",
+      "onsetSeconds": 87,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "2b1be488-b6d5-4758-9e24-533f0aa95c24-s3",
+      "onsetSeconds": 87,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "1000c9eb-1b8b-4007-be6c-2d83da7f9af4-s0",
+      "onsetSeconds": 89,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "1000c9eb-1b8b-4007-be6c-2d83da7f9af4-s1",
+      "onsetSeconds": 89,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 2
+    },
+    {
+      "id": "1000c9eb-1b8b-4007-be6c-2d83da7f9af4-s2",
+      "onsetSeconds": 89,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "1000c9eb-1b8b-4007-be6c-2d83da7f9af4-s3",
+      "onsetSeconds": 89,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "f60e2dac-3de8-41f0-ad93-79739276e28d-s0",
+      "onsetSeconds": 90,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "f60e2dac-3de8-41f0-ad93-79739276e28d-s1",
+      "onsetSeconds": 90,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "f60e2dac-3de8-41f0-ad93-79739276e28d-s2",
+      "onsetSeconds": 90,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 1
+    },
+    {
+      "id": "f60e2dac-3de8-41f0-ad93-79739276e28d-s3",
+      "onsetSeconds": 90,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "26c97391-5022-4bc6-9a91-76219657d0f6-s0",
+      "onsetSeconds": 94,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "26c97391-5022-4bc6-9a91-76219657d0f6-s1",
+      "onsetSeconds": 94,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 2
+    },
+    {
+      "id": "26c97391-5022-4bc6-9a91-76219657d0f6-s2",
+      "onsetSeconds": 94,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 1
+    },
+    {
+      "id": "26c97391-5022-4bc6-9a91-76219657d0f6-s3",
+      "onsetSeconds": 94,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "240be507-ae24-410e-8421-0f9904404676-s0",
+      "onsetSeconds": 96,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "240be507-ae24-410e-8421-0f9904404676-s1",
+      "onsetSeconds": 96,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 4
+    },
+    {
+      "id": "240be507-ae24-410e-8421-0f9904404676-s2",
+      "onsetSeconds": 96,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "240be507-ae24-410e-8421-0f9904404676-s3",
+      "onsetSeconds": 96,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "e3a436b0-ef0f-4a4c-85a2-9abd5690d3bc-s0",
+      "onsetSeconds": 98,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "e3a436b0-ef0f-4a4c-85a2-9abd5690d3bc-s1",
+      "onsetSeconds": 98,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "e3a436b0-ef0f-4a4c-85a2-9abd5690d3bc-s2",
+      "onsetSeconds": 98,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 1
+    },
+    {
+      "id": "e3a436b0-ef0f-4a4c-85a2-9abd5690d3bc-s3",
+      "onsetSeconds": 98,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "887e21e9-91bc-4d88-8f03-9e256682453e-s0",
+      "onsetSeconds": 100,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "887e21e9-91bc-4d88-8f03-9e256682453e-s1",
+      "onsetSeconds": 100,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 2
+    },
+    {
+      "id": "887e21e9-91bc-4d88-8f03-9e256682453e-s2",
+      "onsetSeconds": 100,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "887e21e9-91bc-4d88-8f03-9e256682453e-s3",
+      "onsetSeconds": 100,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "52ec40e4-206d-4ad9-a35b-72451ef922ec-s0",
+      "onsetSeconds": 103,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "52ec40e4-206d-4ad9-a35b-72451ef922ec-s1",
+      "onsetSeconds": 103,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "52ec40e4-206d-4ad9-a35b-72451ef922ec-s2",
+      "onsetSeconds": 103,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "52ec40e4-206d-4ad9-a35b-72451ef922ec-s3",
+      "onsetSeconds": 103,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 3
+    },
+    {
+      "id": "8f552271-8d21-49e9-9145-3e5f3519402c-s0",
+      "onsetSeconds": 106,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "8f552271-8d21-49e9-9145-3e5f3519402c-s1",
+      "onsetSeconds": 106,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 4
+    },
+    {
+      "id": "8f552271-8d21-49e9-9145-3e5f3519402c-s2",
+      "onsetSeconds": 106,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "8f552271-8d21-49e9-9145-3e5f3519402c-s3",
+      "onsetSeconds": 106,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "74a861a9-1ced-4af5-b069-3303ff719d43-s0",
+      "onsetSeconds": 109,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "74a861a9-1ced-4af5-b069-3303ff719d43-s1",
+      "onsetSeconds": 109,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "74a861a9-1ced-4af5-b069-3303ff719d43-s2",
+      "onsetSeconds": 109,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "74a861a9-1ced-4af5-b069-3303ff719d43-s3",
+      "onsetSeconds": 109,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "dd67d980-96cc-4892-8610-e11a4a941414-s0",
+      "onsetSeconds": 110,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "dd67d980-96cc-4892-8610-e11a4a941414-s1",
+      "onsetSeconds": 110,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 2
+    },
+    {
+      "id": "dd67d980-96cc-4892-8610-e11a4a941414-s2",
+      "onsetSeconds": 110,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "dd67d980-96cc-4892-8610-e11a4a941414-s3",
+      "onsetSeconds": 110,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "899e2b7b-7cbb-4f90-a074-bdba2b56a440-s0",
+      "onsetSeconds": 111,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "899e2b7b-7cbb-4f90-a074-bdba2b56a440-s1",
+      "onsetSeconds": 111,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "899e2b7b-7cbb-4f90-a074-bdba2b56a440-s2",
+      "onsetSeconds": 111,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 1
+    },
+    {
+      "id": "899e2b7b-7cbb-4f90-a074-bdba2b56a440-s3",
+      "onsetSeconds": 111,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "60868843-e388-4050-9a52-2414c92eb219-s0",
+      "onsetSeconds": 114,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "60868843-e388-4050-9a52-2414c92eb219-s1",
+      "onsetSeconds": 114,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "60868843-e388-4050-9a52-2414c92eb219-s2",
+      "onsetSeconds": 114,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "60868843-e388-4050-9a52-2414c92eb219-s3",
+      "onsetSeconds": 114,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 3
+    },
+    {
+      "id": "7d72c3c1-eef0-4838-a7b2-804e97559be4-s0",
+      "onsetSeconds": 117,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "7d72c3c1-eef0-4838-a7b2-804e97559be4-s1",
+      "onsetSeconds": 117,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 4
+    },
+    {
+      "id": "7d72c3c1-eef0-4838-a7b2-804e97559be4-s2",
+      "onsetSeconds": 117,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "7d72c3c1-eef0-4838-a7b2-804e97559be4-s3",
+      "onsetSeconds": 117,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "b8f3bc05-93c0-4f4b-8eb1-94f4a78002dc-s0",
+      "onsetSeconds": 119,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "b8f3bc05-93c0-4f4b-8eb1-94f4a78002dc-s1",
+      "onsetSeconds": 119,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "b8f3bc05-93c0-4f4b-8eb1-94f4a78002dc-s2",
+      "onsetSeconds": 119,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "b8f3bc05-93c0-4f4b-8eb1-94f4a78002dc-s3",
+      "onsetSeconds": 119,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "cb182b22-7740-400c-8d96-93bbd27c1010-s0",
+      "onsetSeconds": 122,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "cb182b22-7740-400c-8d96-93bbd27c1010-s1",
+      "onsetSeconds": 122,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "cb182b22-7740-400c-8d96-93bbd27c1010-s2",
+      "onsetSeconds": 122,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 1
+    },
+    {
+      "id": "cb182b22-7740-400c-8d96-93bbd27c1010-s3",
+      "onsetSeconds": 122,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "9f4cf2fe-fb40-42b5-86e1-497dd8b7e72d-s0",
+      "onsetSeconds": 125,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "9f4cf2fe-fb40-42b5-86e1-497dd8b7e72d-s1",
+      "onsetSeconds": 125,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "9f4cf2fe-fb40-42b5-86e1-497dd8b7e72d-s2",
+      "onsetSeconds": 125,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "9f4cf2fe-fb40-42b5-86e1-497dd8b7e72d-s3",
+      "onsetSeconds": 125,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 3
+    },
+    {
+      "id": "292be176-550a-4aba-a234-b1401e331a8b-s0",
+      "onsetSeconds": 128,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "292be176-550a-4aba-a234-b1401e331a8b-s1",
+      "onsetSeconds": 128,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 4
+    },
+    {
+      "id": "292be176-550a-4aba-a234-b1401e331a8b-s2",
+      "onsetSeconds": 128,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "292be176-550a-4aba-a234-b1401e331a8b-s3",
+      "onsetSeconds": 128,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "8835ce79-cd7a-4b04-bff6-b3416fb9f601-s0",
+      "onsetSeconds": 130,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "8835ce79-cd7a-4b04-bff6-b3416fb9f601-s1",
+      "onsetSeconds": 130,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "8835ce79-cd7a-4b04-bff6-b3416fb9f601-s2",
+      "onsetSeconds": 130,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "8835ce79-cd7a-4b04-bff6-b3416fb9f601-s3",
+      "onsetSeconds": 130,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "2602307b-fd25-481d-86af-ec1af6cb96b0-s0",
+      "onsetSeconds": 132,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "2602307b-fd25-481d-86af-ec1af6cb96b0-s1",
+      "onsetSeconds": 132,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 2
+    },
+    {
+      "id": "2602307b-fd25-481d-86af-ec1af6cb96b0-s2",
+      "onsetSeconds": 132,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "2602307b-fd25-481d-86af-ec1af6cb96b0-s3",
+      "onsetSeconds": 132,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "3adfcc1d-f61e-4bc8-a1d1-4cf41978d12e-s0",
+      "onsetSeconds": 133,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "3adfcc1d-f61e-4bc8-a1d1-4cf41978d12e-s1",
+      "onsetSeconds": 133,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "3adfcc1d-f61e-4bc8-a1d1-4cf41978d12e-s2",
+      "onsetSeconds": 133,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 1
+    },
+    {
+      "id": "3adfcc1d-f61e-4bc8-a1d1-4cf41978d12e-s3",
+      "onsetSeconds": 133,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "8a4af855-b7d4-4bff-a81f-077552917819-s0",
+      "onsetSeconds": 135,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "8a4af855-b7d4-4bff-a81f-077552917819-s1",
+      "onsetSeconds": 135,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 2
+    },
+    {
+      "id": "8a4af855-b7d4-4bff-a81f-077552917819-s2",
+      "onsetSeconds": 135,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "8a4af855-b7d4-4bff-a81f-077552917819-s3",
+      "onsetSeconds": 135,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "ecaac3f6-bb40-4ec7-a2d5-bb00f7b76f25-s0",
+      "onsetSeconds": 136,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "ecaac3f6-bb40-4ec7-a2d5-bb00f7b76f25-s1",
+      "onsetSeconds": 136,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 2
+    },
+    {
+      "id": "ecaac3f6-bb40-4ec7-a2d5-bb00f7b76f25-s2",
+      "onsetSeconds": 136,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 1
+    },
+    {
+      "id": "ecaac3f6-bb40-4ec7-a2d5-bb00f7b76f25-s3",
+      "onsetSeconds": 136,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "b0cfa32f-7165-4e13-bf93-0aec046f8430-s0",
+      "onsetSeconds": 138,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "b0cfa32f-7165-4e13-bf93-0aec046f8430-s1",
+      "onsetSeconds": 138,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 4
+    },
+    {
+      "id": "b0cfa32f-7165-4e13-bf93-0aec046f8430-s2",
+      "onsetSeconds": 138,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "b0cfa32f-7165-4e13-bf93-0aec046f8430-s3",
+      "onsetSeconds": 138,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "e87525a3-43cd-45ff-9be6-c27d8fbf7fa0-s0",
+      "onsetSeconds": 141,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "e87525a3-43cd-45ff-9be6-c27d8fbf7fa0-s1",
+      "onsetSeconds": 141,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "e87525a3-43cd-45ff-9be6-c27d8fbf7fa0-s2",
+      "onsetSeconds": 141,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "e87525a3-43cd-45ff-9be6-c27d8fbf7fa0-s3",
+      "onsetSeconds": 141,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "6814b6cc-26a4-4567-9b33-2f71670953ff-s0",
+      "onsetSeconds": 144,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "6814b6cc-26a4-4567-9b33-2f71670953ff-s1",
+      "onsetSeconds": 144,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 2
+    },
+    {
+      "id": "6814b6cc-26a4-4567-9b33-2f71670953ff-s2",
+      "onsetSeconds": 144,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "6814b6cc-26a4-4567-9b33-2f71670953ff-s3",
+      "onsetSeconds": 144,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "5f8f6631-214f-4eaa-bd19-ffc8d828180d-s0",
+      "onsetSeconds": 146,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "5f8f6631-214f-4eaa-bd19-ffc8d828180d-s1",
+      "onsetSeconds": 146,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 2
+    },
+    {
+      "id": "5f8f6631-214f-4eaa-bd19-ffc8d828180d-s2",
+      "onsetSeconds": 146,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 1
+    },
+    {
+      "id": "5f8f6631-214f-4eaa-bd19-ffc8d828180d-s3",
+      "onsetSeconds": 146,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "282c645d-ce28-46fb-b80e-9f6f4da39b8f-s0",
+      "onsetSeconds": 149,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "282c645d-ce28-46fb-b80e-9f6f4da39b8f-s1",
+      "onsetSeconds": 149,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 4
+    },
+    {
+      "id": "282c645d-ce28-46fb-b80e-9f6f4da39b8f-s2",
+      "onsetSeconds": 149,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "282c645d-ce28-46fb-b80e-9f6f4da39b8f-s3",
+      "onsetSeconds": 149,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "996f9e0c-5b41-485a-9feb-c68345127558-s0",
+      "onsetSeconds": 152,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "996f9e0c-5b41-485a-9feb-c68345127558-s1",
+      "onsetSeconds": 152,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "996f9e0c-5b41-485a-9feb-c68345127558-s2",
+      "onsetSeconds": 152,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 1
+    },
+    {
+      "id": "996f9e0c-5b41-485a-9feb-c68345127558-s3",
+      "onsetSeconds": 152,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "798c8344-04c0-44c3-9776-18371e834158-s0",
+      "onsetSeconds": 155,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "798c8344-04c0-44c3-9776-18371e834158-s1",
+      "onsetSeconds": 155,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 2
+    },
+    {
+      "id": "798c8344-04c0-44c3-9776-18371e834158-s2",
+      "onsetSeconds": 155,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "798c8344-04c0-44c3-9776-18371e834158-s3",
+      "onsetSeconds": 155,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "9673c668-55d1-4a99-b3be-1449796ec52d-s0",
+      "onsetSeconds": 158,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "9673c668-55d1-4a99-b3be-1449796ec52d-s1",
+      "onsetSeconds": 158,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "9673c668-55d1-4a99-b3be-1449796ec52d-s2",
+      "onsetSeconds": 158,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "9673c668-55d1-4a99-b3be-1449796ec52d-s3",
+      "onsetSeconds": 158,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 3
+    },
+    {
+      "id": "60f0c328-0ee3-42fb-9ed0-bf5f2a8eabc8-s0",
+      "onsetSeconds": 160,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "60f0c328-0ee3-42fb-9ed0-bf5f2a8eabc8-s1",
+      "onsetSeconds": 160,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 4
+    },
+    {
+      "id": "60f0c328-0ee3-42fb-9ed0-bf5f2a8eabc8-s2",
+      "onsetSeconds": 160,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "60f0c328-0ee3-42fb-9ed0-bf5f2a8eabc8-s3",
+      "onsetSeconds": 160,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "7997a6aa-088e-4e98-a2be-d8aa85d80c67-s0",
+      "onsetSeconds": 162,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "7997a6aa-088e-4e98-a2be-d8aa85d80c67-s1",
+      "onsetSeconds": 162,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "7997a6aa-088e-4e98-a2be-d8aa85d80c67-s2",
+      "onsetSeconds": 162,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "7997a6aa-088e-4e98-a2be-d8aa85d80c67-s3",
+      "onsetSeconds": 162,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "2b07d920-adc6-446d-97ea-e3661068f94f-s0",
+      "onsetSeconds": 164,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "2b07d920-adc6-446d-97ea-e3661068f94f-s1",
+      "onsetSeconds": 164,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 2
+    },
+    {
+      "id": "2b07d920-adc6-446d-97ea-e3661068f94f-s2",
+      "onsetSeconds": 164,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "2b07d920-adc6-446d-97ea-e3661068f94f-s3",
+      "onsetSeconds": 164,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "519bd809-8b63-4d2a-9eef-92887ef1ff7d-s0",
+      "onsetSeconds": 165,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "519bd809-8b63-4d2a-9eef-92887ef1ff7d-s1",
+      "onsetSeconds": 165,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "519bd809-8b63-4d2a-9eef-92887ef1ff7d-s2",
+      "onsetSeconds": 165,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 1
+    },
+    {
+      "id": "519bd809-8b63-4d2a-9eef-92887ef1ff7d-s3",
+      "onsetSeconds": 165,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "6b1a8ddb-3014-4c96-8bb6-647b95a7c6d3-s0",
+      "onsetSeconds": 168,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "6b1a8ddb-3014-4c96-8bb6-647b95a7c6d3-s1",
+      "onsetSeconds": 168,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "6b1a8ddb-3014-4c96-8bb6-647b95a7c6d3-s2",
+      "onsetSeconds": 168,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "6b1a8ddb-3014-4c96-8bb6-647b95a7c6d3-s3",
+      "onsetSeconds": 168,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 3
+    },
+    {
+      "id": "477a2631-be74-4843-b584-d6ec929ff00a-s0",
+      "onsetSeconds": 171,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "477a2631-be74-4843-b584-d6ec929ff00a-s1",
+      "onsetSeconds": 171,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 4
+    },
+    {
+      "id": "477a2631-be74-4843-b584-d6ec929ff00a-s2",
+      "onsetSeconds": 171,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "477a2631-be74-4843-b584-d6ec929ff00a-s3",
+      "onsetSeconds": 171,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "3fdb3d61-3a16-42e1-b481-be98f7063db0-s0",
+      "onsetSeconds": 173,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "3fdb3d61-3a16-42e1-b481-be98f7063db0-s1",
+      "onsetSeconds": 173,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "3fdb3d61-3a16-42e1-b481-be98f7063db0-s2",
+      "onsetSeconds": 173,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "3fdb3d61-3a16-42e1-b481-be98f7063db0-s3",
+      "onsetSeconds": 173,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "ae86b249-54bd-4182-82a3-ad6c2ed39e60-s0",
+      "onsetSeconds": 175,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "ae86b249-54bd-4182-82a3-ad6c2ed39e60-s1",
+      "onsetSeconds": 175,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 2
+    },
+    {
+      "id": "ae86b249-54bd-4182-82a3-ad6c2ed39e60-s2",
+      "onsetSeconds": 175,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "ae86b249-54bd-4182-82a3-ad6c2ed39e60-s3",
+      "onsetSeconds": 175,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "f688b9f2-9972-4805-b7d6-e9baa1aa34db-s0",
+      "onsetSeconds": 176,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "f688b9f2-9972-4805-b7d6-e9baa1aa34db-s1",
+      "onsetSeconds": 176,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "f688b9f2-9972-4805-b7d6-e9baa1aa34db-s2",
+      "onsetSeconds": 176,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 1
+    },
+    {
+      "id": "f688b9f2-9972-4805-b7d6-e9baa1aa34db-s3",
+      "onsetSeconds": 176,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "5e47bb2d-de4f-4434-9c41-5060ed190eae-s0",
+      "onsetSeconds": 179,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "5e47bb2d-de4f-4434-9c41-5060ed190eae-s1",
+      "onsetSeconds": 179,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "5e47bb2d-de4f-4434-9c41-5060ed190eae-s2",
+      "onsetSeconds": 179,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "5e47bb2d-de4f-4434-9c41-5060ed190eae-s3",
+      "onsetSeconds": 179,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 3
+    },
+    {
+      "id": "defe1936-4f18-4808-a224-2a46538285c1-s0",
+      "onsetSeconds": 182,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "defe1936-4f18-4808-a224-2a46538285c1-s1",
+      "onsetSeconds": 182,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 4
+    },
+    {
+      "id": "defe1936-4f18-4808-a224-2a46538285c1-s2",
+      "onsetSeconds": 182,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "defe1936-4f18-4808-a224-2a46538285c1-s3",
+      "onsetSeconds": 182,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "0690d092-1639-4b4b-bdf3-4cdfbb33a706-s0",
+      "onsetSeconds": 184,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "0690d092-1639-4b4b-bdf3-4cdfbb33a706-s1",
+      "onsetSeconds": 184,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "0690d092-1639-4b4b-bdf3-4cdfbb33a706-s2",
+      "onsetSeconds": 184,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "0690d092-1639-4b4b-bdf3-4cdfbb33a706-s3",
+      "onsetSeconds": 184,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "ab62b3a3-6082-47ba-a3a9-c4b59be62fef-s0",
+      "onsetSeconds": 186,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "ab62b3a3-6082-47ba-a3a9-c4b59be62fef-s1",
+      "onsetSeconds": 186,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 2
+    },
+    {
+      "id": "ab62b3a3-6082-47ba-a3a9-c4b59be62fef-s2",
+      "onsetSeconds": 186,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 3
+    },
+    {
+      "id": "ab62b3a3-6082-47ba-a3a9-c4b59be62fef-s3",
+      "onsetSeconds": 186,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 2
+    },
+    {
+      "id": "b3b07bc1-c50a-4abf-bbe4-917d216371f8-s0",
+      "onsetSeconds": 187,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 2
+    },
+    {
+      "id": "b3b07bc1-c50a-4abf-bbe4-917d216371f8-s1",
+      "onsetSeconds": 187,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "b3b07bc1-c50a-4abf-bbe4-917d216371f8-s2",
+      "onsetSeconds": 187,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 1
+    },
+    {
+      "id": "b3b07bc1-c50a-4abf-bbe4-917d216371f8-s3",
+      "onsetSeconds": 187,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 0
+    },
+    {
+      "id": "93ebdd2e-7901-48d7-a857-1afa4c335db6-s0",
+      "onsetSeconds": 190,
+      "durationSeconds": 0.35,
+      "stringIndex": 0,
+      "fret": 0
+    },
+    {
+      "id": "93ebdd2e-7901-48d7-a857-1afa4c335db6-s1",
+      "onsetSeconds": 190,
+      "durationSeconds": 0.35,
+      "stringIndex": 1,
+      "fret": 0
+    },
+    {
+      "id": "93ebdd2e-7901-48d7-a857-1afa4c335db6-s2",
+      "onsetSeconds": 190,
+      "durationSeconds": 0.35,
+      "stringIndex": 2,
+      "fret": 0
+    },
+    {
+      "id": "93ebdd2e-7901-48d7-a857-1afa4c335db6-s3",
+      "onsetSeconds": 190,
+      "durationSeconds": 0.35,
+      "stringIndex": 3,
+      "fret": 3
+    }
+  ],
+  "sections": [
+    {
+      "id": "5666343c-3892-4353-be46-8d0a4bb905bb",
+      "title": "Verse",
+      "startSeconds": 0,
+      "endSeconds": 5
+    }
+  ],
+  "strumPattern": [
+    "down",
+    "rest",
+    "down",
+    "up",
+    "rest",
+    "up",
+    "down",
+    "up"
+  ],
+  "stringLabels": [
+    "G",
+    "C",
+    "E",
+    "A"
+  ],
+  "openFrequencies": [
+    392,
+    261.63,
+    329.63,
+    440
+  ],
+  "experience": {
+    "chords": [
+      {
+        "id": "C",
+        "displayName": "C",
+        "frets": [
+          0,
+          0,
+          0,
+          3
+        ]
+      },
+      {
+        "id": "Em",
+        "displayName": "Em",
+        "frets": [
+          0,
+          4,
+          3,
+          2
+        ]
+      },
+      {
+        "id": "Am",
+        "displayName": "Am",
+        "frets": [
+          2,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "G",
+        "displayName": "G",
+        "frets": [
+          0,
+          2,
+          3,
+          2
+        ]
+      },
+      {
+        "id": "F",
+        "displayName": "F",
+        "frets": [
+          2,
+          0,
+          1,
+          0
+        ]
+      },
+      {
+        "id": "Dm",
+        "displayName": "Dm",
+        "frets": [
+          2,
+          2,
+          1,
+          0
+        ]
+      }
+    ],
+    "lyricLines": [],
+    "arrangements": [
+      {
+        "id": "superstar",
+        "tier": "superstar",
+        "chordIDs": [
+          "C",
+          "Em",
+          "Am",
+          "G",
+          "F",
+          "Dm"
+        ],
+        "cues": [
+          {
+            "id": "eaa1818c-bb0b-4a6b-80d5-b1fdea7b46ac",
+            "chordID": "C",
+            "onsetSeconds": 4
+          },
+          {
+            "id": "57cc3a85-4139-44fb-bb30-7ddb3128ac35",
+            "chordID": "C",
+            "onsetSeconds": 6
+          },
+          {
+            "id": "12b9d75e-7ad5-4200-b64c-5fb77c5394dc",
+            "chordID": "Em",
+            "onsetSeconds": 9
+          },
+          {
+            "id": "2ea55af9-3a7b-4a0f-b7e1-d46f505d2731",
+            "chordID": "Am",
+            "onsetSeconds": 12
+          },
+          {
+            "id": "90df7b7b-4e0f-4c3b-b5c8-ad3c2c1d7782",
+            "chordID": "G",
+            "onsetSeconds": 13
+          },
+          {
+            "id": "38e7d346-3199-4824-a23f-38e23ac1f363",
+            "chordID": "F",
+            "onsetSeconds": 14
+          },
+          {
+            "id": "5d297baf-b06d-4291-b1a8-0b6af39e3b1f",
+            "chordID": "C",
+            "onsetSeconds": 17
+          },
+          {
+            "id": "b2b7ac57-f846-4502-8a30-a700445ec311",
+            "chordID": "Em",
+            "onsetSeconds": 20
+          },
+          {
+            "id": "7967d887-0911-457f-be8c-eba1ab549c54",
+            "chordID": "Am",
+            "onsetSeconds": 23
+          },
+          {
+            "id": "4378cf7e-6e20-47ed-927e-292f842aa859",
+            "chordID": "G",
+            "onsetSeconds": 24
+          },
+          {
+            "id": "f8135ae5-1c2a-4efc-95bb-08aed73a2ccb",
+            "chordID": "F",
+            "onsetSeconds": 25
+          },
+          {
+            "id": "1372a5a2-66e4-4ef5-8c3c-3b20789ab2c6",
+            "chordID": "Dm",
+            "onsetSeconds": 29
+          },
+          {
+            "id": "c16c62d6-1ec5-4ee2-baea-ebdffeb54512",
+            "chordID": "Em",
+            "onsetSeconds": 31
+          },
+          {
+            "id": "fde1966f-977d-4421-9eea-5c5271b0df4b",
+            "chordID": "F",
+            "onsetSeconds": 33
+          },
+          {
+            "id": "ca49cc0f-2326-43d6-9882-df050e3e4806",
+            "chordID": "G",
+            "onsetSeconds": 36
+          },
+          {
+            "id": "f3d07c8d-81c4-4311-9128-6c51460a8a29",
+            "chordID": "C",
+            "onsetSeconds": 38
+          },
+          {
+            "id": "72670d40-3912-4020-aa19-2fc072eabfda",
+            "chordID": "Em",
+            "onsetSeconds": 41
+          },
+          {
+            "id": "0c4300ff-d720-4431-a36e-af43c5b26205",
+            "chordID": "Am",
+            "onsetSeconds": 44.51
+          },
+          {
+            "id": "f13c5e53-1980-45ca-8803-327b630c338c",
+            "chordID": "F",
+            "onsetSeconds": 46
+          },
+          {
+            "id": "09ed2e0f-8c3e-4247-b384-45666c9753ea",
+            "chordID": "C",
+            "onsetSeconds": 49
+          },
+          {
+            "id": "de78b746-63ed-4ac9-91e7-4b5cc5a11d2a",
+            "chordID": "Em",
+            "onsetSeconds": 52
+          },
+          {
+            "id": "1ca3538f-5d5f-4df6-a17e-87656e89970d",
+            "chordID": "Am",
+            "onsetSeconds": 55
+          },
+          {
+            "id": "9d1e8ef4-747f-4eec-9bf8-81ff3d0c547d",
+            "chordID": "G",
+            "onsetSeconds": 56
+          },
+          {
+            "id": "1ed15a61-c200-4ea6-8379-dc25f3f2f172",
+            "chordID": "F",
+            "onsetSeconds": 57
+          },
+          {
+            "id": "6cece809-1715-4ca2-a7ff-b2b94c94c0b4",
+            "chordID": "C",
+            "onsetSeconds": 60
+          },
+          {
+            "id": "a0ced5fe-7dd9-4701-afe5-905a28d07fba",
+            "chordID": "Em",
+            "onsetSeconds": 63
+          },
+          {
+            "id": "70f51495-0379-4308-99b5-9c026e2daa63",
+            "chordID": "Am",
+            "onsetSeconds": 66
+          },
+          {
+            "id": "ea0ed418-acb9-4805-967b-5869378dd428",
+            "chordID": "G",
+            "onsetSeconds": 67
+          },
+          {
+            "id": "a13d1c03-6bb1-4ae8-b984-83383e44b6c5",
+            "chordID": "F",
+            "onsetSeconds": 69
+          },
+          {
+            "id": "f67a5e42-fe33-4784-a0a1-b9d593f99f53",
+            "chordID": "G",
+            "onsetSeconds": 70
+          },
+          {
+            "id": "8a2925c2-7c93-4147-a868-794d2cdf02cf",
+            "chordID": "C",
+            "onsetSeconds": 71.6
+          },
+          {
+            "id": "48024b16-346f-4519-a05c-069520ec9b4f",
+            "chordID": "Em",
+            "onsetSeconds": 73
+          },
+          {
+            "id": "a83696e0-5189-4190-a12e-c55c57ae5b00",
+            "chordID": "Am",
+            "onsetSeconds": 76
+          },
+          {
+            "id": "4cc652a6-645d-482d-9ac5-4464cd561b2b",
+            "chordID": "G",
+            "onsetSeconds": 79
+          },
+          {
+            "id": "99ca05eb-68ec-48a7-a1de-813f173f8a78",
+            "chordID": "F",
+            "onsetSeconds": 80
+          },
+          {
+            "id": "56d68c0b-bef7-4b72-8f4c-b2b3161a529d",
+            "chordID": "C",
+            "onsetSeconds": 82
+          },
+          {
+            "id": "6dbb9de6-593d-431b-b85c-c11436d75521",
+            "chordID": "Em",
+            "onsetSeconds": 85
+          },
+          {
+            "id": "2b1be488-b6d5-4758-9e24-533f0aa95c24",
+            "chordID": "Am",
+            "onsetSeconds": 87
+          },
+          {
+            "id": "1000c9eb-1b8b-4007-be6c-2d83da7f9af4",
+            "chordID": "G",
+            "onsetSeconds": 89
+          },
+          {
+            "id": "f60e2dac-3de8-41f0-ad93-79739276e28d",
+            "chordID": "F",
+            "onsetSeconds": 90
+          },
+          {
+            "id": "26c97391-5022-4bc6-9a91-76219657d0f6",
+            "chordID": "Dm",
+            "onsetSeconds": 94
+          },
+          {
+            "id": "240be507-ae24-410e-8421-0f9904404676",
+            "chordID": "Em",
+            "onsetSeconds": 96
+          },
+          {
+            "id": "e3a436b0-ef0f-4a4c-85a2-9abd5690d3bc",
+            "chordID": "F",
+            "onsetSeconds": 98
+          },
+          {
+            "id": "887e21e9-91bc-4d88-8f03-9e256682453e",
+            "chordID": "G",
+            "onsetSeconds": 100
+          },
+          {
+            "id": "52ec40e4-206d-4ad9-a35b-72451ef922ec",
+            "chordID": "C",
+            "onsetSeconds": 103
+          },
+          {
+            "id": "8f552271-8d21-49e9-9145-3e5f3519402c",
+            "chordID": "Em",
+            "onsetSeconds": 106
+          },
+          {
+            "id": "74a861a9-1ced-4af5-b069-3303ff719d43",
+            "chordID": "Am",
+            "onsetSeconds": 109
+          },
+          {
+            "id": "dd67d980-96cc-4892-8610-e11a4a941414",
+            "chordID": "G",
+            "onsetSeconds": 110
+          },
+          {
+            "id": "899e2b7b-7cbb-4f90-a074-bdba2b56a440",
+            "chordID": "F",
+            "onsetSeconds": 111
+          },
+          {
+            "id": "60868843-e388-4050-9a52-2414c92eb219",
+            "chordID": "C",
+            "onsetSeconds": 114
+          },
+          {
+            "id": "7d72c3c1-eef0-4838-a7b2-804e97559be4",
+            "chordID": "Em",
+            "onsetSeconds": 117
+          },
+          {
+            "id": "b8f3bc05-93c0-4f4b-8eb1-94f4a78002dc",
+            "chordID": "Am",
+            "onsetSeconds": 119
+          },
+          {
+            "id": "cb182b22-7740-400c-8d96-93bbd27c1010",
+            "chordID": "F",
+            "onsetSeconds": 122
+          },
+          {
+            "id": "9f4cf2fe-fb40-42b5-86e1-497dd8b7e72d",
+            "chordID": "C",
+            "onsetSeconds": 125
+          },
+          {
+            "id": "292be176-550a-4aba-a234-b1401e331a8b",
+            "chordID": "Em",
+            "onsetSeconds": 128
+          },
+          {
+            "id": "8835ce79-cd7a-4b04-bff6-b3416fb9f601",
+            "chordID": "Am",
+            "onsetSeconds": 130
+          },
+          {
+            "id": "2602307b-fd25-481d-86af-ec1af6cb96b0",
+            "chordID": "G",
+            "onsetSeconds": 132
+          },
+          {
+            "id": "3adfcc1d-f61e-4bc8-a1d1-4cf41978d12e",
+            "chordID": "F",
+            "onsetSeconds": 133
+          },
+          {
+            "id": "8a4af855-b7d4-4bff-a81f-077552917819",
+            "chordID": "G",
+            "onsetSeconds": 135
+          },
+          {
+            "id": "ecaac3f6-bb40-4ec7-a2d5-bb00f7b76f25",
+            "chordID": "Dm",
+            "onsetSeconds": 136
+          },
+          {
+            "id": "b0cfa32f-7165-4e13-bf93-0aec046f8430",
+            "chordID": "Em",
+            "onsetSeconds": 138
+          },
+          {
+            "id": "e87525a3-43cd-45ff-9be6-c27d8fbf7fa0",
+            "chordID": "Am",
+            "onsetSeconds": 141
+          },
+          {
+            "id": "6814b6cc-26a4-4567-9b33-2f71670953ff",
+            "chordID": "G",
+            "onsetSeconds": 144
+          },
+          {
+            "id": "5f8f6631-214f-4eaa-bd19-ffc8d828180d",
+            "chordID": "Dm",
+            "onsetSeconds": 146
+          },
+          {
+            "id": "282c645d-ce28-46fb-b80e-9f6f4da39b8f",
+            "chordID": "Em",
+            "onsetSeconds": 149
+          },
+          {
+            "id": "996f9e0c-5b41-485a-9feb-c68345127558",
+            "chordID": "F",
+            "onsetSeconds": 152
+          },
+          {
+            "id": "798c8344-04c0-44c3-9776-18371e834158",
+            "chordID": "G",
+            "onsetSeconds": 155
+          },
+          {
+            "id": "9673c668-55d1-4a99-b3be-1449796ec52d",
+            "chordID": "C",
+            "onsetSeconds": 158
+          },
+          {
+            "id": "60f0c328-0ee3-42fb-9ed0-bf5f2a8eabc8",
+            "chordID": "Em",
+            "onsetSeconds": 160
+          },
+          {
+            "id": "7997a6aa-088e-4e98-a2be-d8aa85d80c67",
+            "chordID": "Am",
+            "onsetSeconds": 162
+          },
+          {
+            "id": "2b07d920-adc6-446d-97ea-e3661068f94f",
+            "chordID": "G",
+            "onsetSeconds": 164
+          },
+          {
+            "id": "519bd809-8b63-4d2a-9eef-92887ef1ff7d",
+            "chordID": "F",
+            "onsetSeconds": 165
+          },
+          {
+            "id": "6b1a8ddb-3014-4c96-8bb6-647b95a7c6d3",
+            "chordID": "C",
+            "onsetSeconds": 168
+          },
+          {
+            "id": "477a2631-be74-4843-b584-d6ec929ff00a",
+            "chordID": "Em",
+            "onsetSeconds": 171
+          },
+          {
+            "id": "3fdb3d61-3a16-42e1-b481-be98f7063db0",
+            "chordID": "Am",
+            "onsetSeconds": 173
+          },
+          {
+            "id": "ae86b249-54bd-4182-82a3-ad6c2ed39e60",
+            "chordID": "G",
+            "onsetSeconds": 175
+          },
+          {
+            "id": "f688b9f2-9972-4805-b7d6-e9baa1aa34db",
+            "chordID": "F",
+            "onsetSeconds": 176
+          },
+          {
+            "id": "5e47bb2d-de4f-4434-9c41-5060ed190eae",
+            "chordID": "C",
+            "onsetSeconds": 179
+          },
+          {
+            "id": "defe1936-4f18-4808-a224-2a46538285c1",
+            "chordID": "Em",
+            "onsetSeconds": 182
+          },
+          {
+            "id": "0690d092-1639-4b4b-bdf3-4cdfbb33a706",
+            "chordID": "Am",
+            "onsetSeconds": 184
+          },
+          {
+            "id": "ab62b3a3-6082-47ba-a3a9-c4b59be62fef",
+            "chordID": "G",
+            "onsetSeconds": 186
+          },
+          {
+            "id": "b3b07bc1-c50a-4abf-bbe4-917d216371f8",
+            "chordID": "F",
+            "onsetSeconds": 187
+          },
+          {
+            "id": "93ebdd2e-7901-48d7-a857-1afa4c335db6",
+            "chordID": "C",
+            "onsetSeconds": 190
+          }
+        ]
+      }
+    ]
+  }
+}

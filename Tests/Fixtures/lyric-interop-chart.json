@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 2,
+  "id": "invented-line-pair",
+  "version": 1,
+  "title": "Invented Line Pair",
+  "style": "basicStrum",
+  "difficulty": "easy",
+  "instrument": "ukulele",
+  "chordNames": ["C", "G"],
+  "maxFret": 12,
+  "nominalBPM": 80,
+  "beatsPerBar": 4,
+  "firstBeatOffsetSeconds": 0,
+  "audioDurationSeconds": 4,
+  "audioSHA256": "039058c6f2c0cb492c533b0a4d14ef77cc0f78abccced5287d84a1a2011cfb81",
+  "notes": [
+    { "id": "cue-c-s0", "onsetSeconds": 0.5, "durationSeconds": 0.35, "stringIndex": 0, "fret": 0 },
+    { "id": "cue-c-s1", "onsetSeconds": 0.5, "durationSeconds": 0.35, "stringIndex": 1, "fret": 0 },
+    { "id": "cue-c-s2", "onsetSeconds": 0.5, "durationSeconds": 0.35, "stringIndex": 2, "fret": 0 },
+    { "id": "cue-c-s3", "onsetSeconds": 0.5, "durationSeconds": 0.35, "stringIndex": 3, "fret": 3 },
+    { "id": "cue-g-s0", "onsetSeconds": 2, "durationSeconds": 0.35, "stringIndex": 0, "fret": 0 },
+    { "id": "cue-g-s1", "onsetSeconds": 2, "durationSeconds": 0.35, "stringIndex": 1, "fret": 2 },
+    { "id": "cue-g-s2", "onsetSeconds": 2, "durationSeconds": 0.35, "stringIndex": 2, "fret": 3 },
+    { "id": "cue-g-s3", "onsetSeconds": 2, "durationSeconds": 0.35, "stringIndex": 3, "fret": 2 }
+  ],
+  "sections": [{ "id": "verse", "title": "Verse", "startSeconds": 0, "endSeconds": 4 }],
+  "stringLabels": ["G", "C", "E", "A"],
+  "openFrequencies": [392, 261.63, 329.63, 440],
+  "experience": {
+    "chords": [
+      { "id": "C", "displayName": "C", "frets": [0, 0, 0, 3] },
+      { "id": "G", "displayName": "G", "frets": [0, 2, 3, 2] }
+    ],
+    "lyricLines": [
+      { "id": "line-a", "sectionID": "verse", "tokens": [
+        { "id": "word-a1", "text": "Hello", "startSeconds": 0.5, "endSeconds": 1 },
+        { "id": "word-a2", "text": "world", "startSeconds": 1, "endSeconds": 1.5 }
+      ] },
+      { "id": "line-b", "sectionID": "verse", "tokens": [
+        { "id": "word-b1", "text": "Shine", "startSeconds": 2, "endSeconds": 2.5 },
+        { "id": "word-b2", "text": "now", "startSeconds": 2.5, "endSeconds": 3 }
+      ] }
+    ],
+    "arrangements": [{ "id": "superstar", "tier": "superstar", "chordIDs": ["C", "G"], "cues": [
+      { "id": "cue-c", "chordID": "C", "lyricTokenID": "word-a1", "onsetSeconds": 0.5 },
+      { "id": "cue-g", "chordID": "G", "lyricTokenID": "word-b1", "onsetSeconds": 2 }
+    ] }]
+  }
+}

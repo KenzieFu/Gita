@@ -20,6 +20,7 @@ final class Microphone: ObservableObject {
     private var engine: AVAudioEngine?
     private var interruptionObserver: NSObjectProtocol?
     private var generation = 0
+    private var echoCancellationEnabled = false
 
     init() {
         interruptionObserver = NotificationCenter.default.addObserver(
@@ -34,8 +35,9 @@ final class Microphone: ObservableObject {
         }
     }
 
-    func start() async {
-        guard state != .listening else { return }
+    func start(echoCancellation: Bool = false) async {
+        if state == .listening, echoCancellationEnabled == echoCancellation { return }
+        if state == .listening { stop() }
         generation += 1
         let startGeneration = generation
         state = .requestingPermission
@@ -51,12 +53,20 @@ final class Microphone: ObservableObject {
         }
         do {
             let session = AVAudioSession.sharedInstance()
-            try session.setCategory(.record, mode: .measurement, options: [])
+            try session.setCategory(
+                .playAndRecord,
+                mode: echoCancellation ? .voiceChat : .measurement,
+                options: [.defaultToSpeaker]
+            )
             try session.setPreferredSampleRate(44_100)
             try session.setActive(true)
 
             let newEngine = AVAudioEngine()
             let input = newEngine.inputNode
+            if echoCancellation {
+                try input.setVoiceProcessingEnabled(true)
+                input.isVoiceProcessingBypassed = false
+            }
             let format = input.outputFormat(forBus: 0)
             guard format.channelCount > 0, format.commonFormat == .pcmFormatFloat32 else {
                 state = .failed("This microphone format is not supported.")
@@ -73,6 +83,7 @@ final class Microphone: ObservableObject {
                 }
             }
             engine = newEngine
+            echoCancellationEnabled = echoCancellation
             newEngine.prepare()
             try newEngine.start()
             state = .listening
@@ -89,6 +100,7 @@ final class Microphone: ObservableObject {
             engine.stop()
         }
         engine = nil
+        echoCancellationEnabled = false
         latestSamples = []
         try? AVAudioSession.sharedInstance().setActive(false)
         state = .idle

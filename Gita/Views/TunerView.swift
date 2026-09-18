@@ -36,7 +36,7 @@ struct TunerView: View {
     private var headstockLabels: [String] { instrument.tuningDisplayLabels(currentTuning) }
     private var displayNote: String {
         if instrument == .ukulele { return ukuleleFeedback?.detectedNote ?? "—" }
-        return activeIndex.map { targets[$0].label } ?? "—"
+        return activeIndex.flatMap { targets[safe: $0]?.label } ?? "—"
     }
     private var isAllTuned: Bool { completed.count == instrument.stringCount }
 
@@ -68,18 +68,33 @@ struct TunerView: View {
                                     .foregroundStyle(currentTuning == nil ? ArcadeTheme.yellow : ArcadeTheme.cyan)
                             }
                             TuningHeadstock(instrument: instrument, labels: headstockLabels, highlighted: activeIndex, completed: completed)
-                            HStack {
+                            HStack(spacing: 14) {
                                 Text("No buttons — just play")
                                     .font(.caption)
                                     .foregroundStyle(ArcadeTheme.muted)
                                 Spacer()
+                                Button("Skip for now") {
+                                    completionTask?.cancel()
+                                    successTask?.cancel()
+                                    // The tutorial still needs a tuning to build its
+                                    // lesson targets. Skipping means “use the default
+                                    // tuning”, not “mark every string as tuned”.
+                                    if instrument == .ukulele, currentTuning == nil {
+                                        currentTuning = .highG
+                                        onProgress(completed, .highG)
+                                    }
+                                    onComplete()
+                                }
+                                .font(.caption.weight(.bold))
+                                .foregroundStyle(ArcadeTheme.yellow)
+                                .accessibilityHint("Continue setup without marking every string as tuned")
                                 Button("Change instrument") {
                                     completionTask?.cancel()
                                     successTask?.cancel()
                                     onBack()
                                 }
-                                    .font(.caption.weight(.bold))
-                                    .foregroundStyle(ArcadeTheme.cyan)
+                                .font(.caption.weight(.bold))
+                                .foregroundStyle(ArcadeTheme.cyan)
                             }
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -280,7 +295,7 @@ private struct TuningHeadstock: View {
         let isComplete = completed.contains(index)
         let accent = isComplete ? ArcadeTheme.green : ArcadeTheme.cyan
         return VStack(spacing: 2) {
-            Text(labels[index])
+            Text(labels[safe: index] ?? "?")
                 .font(.title2.weight(.black))
             Text(isComplete ? "✓" : "\(index + 1)")
                 .font(.caption.monospaced().weight(.bold))
@@ -289,7 +304,7 @@ private struct TuningHeadstock: View {
         .foregroundStyle(isActive || isComplete ? ArcadeTheme.background : .white)
         .background(isActive || isComplete ? accent : ArcadeTheme.panel, in: RoundedRectangle(cornerRadius: 16))
         .overlay(RoundedRectangle(cornerRadius: 16).stroke(accent.opacity(isActive || isComplete ? 1 : 0.35), lineWidth: 2))
-        .accessibilityLabel("String \(index + 1), \(labels[index] == "?" ? "note unknown" : labels[index]), \(isComplete ? "tuned" : isActive ? "detected" : "not tuned")")
+        .accessibilityLabel("String \(index + 1), \((labels[safe: index] ?? "?") == "?" ? "note unknown" : (labels[safe: index] ?? "?")), \(isComplete ? "tuned" : isActive ? "detected" : "not tuned")")
     }
 
     private var headstock: some View {
